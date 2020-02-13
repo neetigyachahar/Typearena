@@ -24,7 +24,10 @@
   "homepage": "https://github.com/neetigyachahar/prototype#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "mongoose": "^5.8.11"
+    "mongoose": "^5.8.11",
+    "nodemon": "^2.0.2",
+    "progressbar.js": "^1.1.0"
   }
 }
