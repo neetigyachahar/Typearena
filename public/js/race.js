@@ -95,7 +95,7 @@ function start(){
             }
 
             cd += 1;
-
+            console.log(lst_ptr, word_ptr);
             movCursor(lst, lst_ptr, word_ptr);
             r1.animateProgress(cd, text_len);
             r2.animateProgress(cd, text_len);
@@ -116,11 +116,12 @@ function start(){
                 }
                 word_ptr = 1;
                 lst_ptr += 1;     
-            }else{
+            }else if($('.ty').text() <= lst[lst_ptr][word_ptr]){
                 word_ptr = ty_data.val().length + 1;
             }
         }else{
             if(!err_ack){
+                console.log('dafdf');
                 err_ack= true;
                 error();
                 immortalize(word_ptr-1);
