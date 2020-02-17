@@ -11,7 +11,7 @@ let started = false;
 let ended = false;
 let err_ack = false;
 let accracy = 0;
-let data = `We were the people. We lived in the blank white spaces at the edges of print.We were the people who were not in the papers. We lived in the blank white spaces at the edges of print.`;
+let data = `We were the people. We lived in the blank white spaces at the edges of print. We were the people who were not in the papers. We lived in the blank white spaces at the edges of print.`;
 let lst = data.trim().split(' ');
 let text_len = data.trim().length;
 let limit = lst.length - 1;
@@ -74,6 +74,18 @@ function start(){
             timer();
         }
         
+        evt = evt || window.event;
+        charTyped = String.fromCharCode(evt.which || evt.keyCode);
+        ty_data = $('.ty'); 
+
+        console.log(ty_data.val()+'|'+lst[lst_ptr].substring(0, word_ptr));
+
+        if(subs(ty_data.val(), lst[lst_ptr].substring(0, word_ptr))){
+            console.log(lst[lst_ptr].substring(0, word_ptr-1));
+            $('.ty').val(lst[lst_ptr].substring(0, word_ptr-1));
+            return;
+        }
+
         //This code checks if inital spaces are added or not!
         if (!$('.ty').val().replace(/\s/g, '').length) {
             evt.preventDefault();
@@ -81,9 +93,6 @@ function start(){
             return;
         }
         
-        evt = evt || window.event;
-        charTyped = String.fromCharCode(evt.which || evt.keyCode);
-        ty_data = $('.ty'); 
 
         //matches for the correct input
         if(ty_data.val() == lst[lst_ptr].substring(0, word_ptr)){
@@ -95,7 +104,7 @@ function start(){
             }
 
             cd += 1;
-            console.log(lst_ptr, word_ptr);
+
             movCursor(lst, lst_ptr, word_ptr);
             r1.animateProgress(cd, text_len);
             r2.animateProgress(cd, text_len);
@@ -116,12 +125,11 @@ function start(){
                 }
                 word_ptr = 1;
                 lst_ptr += 1;     
-            }else if($('.ty').text() <= lst[lst_ptr][word_ptr]){
+            }else{
                 word_ptr = ty_data.val().length + 1;
             }
         }else{
             if(!err_ack){
-                console.log('dafdf');
                 err_ack= true;
                 error();
                 immortalize(word_ptr-1);
@@ -179,6 +187,20 @@ class Progress{
     }
 }
 
+function subs(a, b){
+    if(a == b){return false;}
+    let bl = 0;
+    for(let i=0; i<a.length; i++){
+        if(a[i] == b[bl]){
+            bl++;
+            continue;
+        }else{
+            return false;
+        }
+    }
+    return true;
+}
+
 function initializeText(data){
     console.log(data.slice(0, 1));
     $('.cursor').text(data.slice(0, 1));
@@ -195,6 +217,7 @@ function movCursor(lst, lp, wp){
         lp++;
         wp = 0;
     }
+
     $('.typed').text(lst.slice(0, lp).join('')+lst[lp].substring(0, wp));
     $('.cursor').text(lst[lp][wp]);
     $('.tbt').text(lst[lp].substring(wp+1, lst[lp].length) + lst.slice(lp+1, lst.length).join(''));
@@ -210,7 +233,7 @@ function bot(){
             $('.ty').trigger('input');
             ptr++;
         }
-    },60);
+    },100);
 }
 
 function teset(){

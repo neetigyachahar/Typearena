@@ -256,8 +256,8 @@ hr {
 
 .text {
     margin: 1%;
-    margin-right: 5%;
-    margin-left: 5%;
+    margin-right: 10%;
+    margin-left: 10%;
     color: white;
     scroll-behavior: smooth;
     font-size: 1.3rem;
