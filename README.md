@@ -1,4 +1,4 @@
-# Welcome to the official repo of Pro-To-Type
+# Welcome to the official repo of Type Arena
 
 ## To run the site locally:
 
