@@ -178,7 +178,7 @@ main > div {
     align-items: center;
     width: 95%;
     height: 90%;
-    background-color: #1C1C1C;
+    background-color: #1c1c1c;
     border-radius: 22px;
 }
 
@@ -190,6 +190,8 @@ hr {
 
 .meters{
     display: flex;
+    flex-wrap: wrap;
+    /* align-content: center; */
     border-radius: 10px;
     margin: 10px;
     width: 95%;
@@ -202,18 +204,38 @@ hr {
     scroll-behavior: smooth;
 }
 
+.wpm{
+    display: block;
+    color: white;
+    font-family: 'Squada One', cursive;
+    font-size: xx-large;
+}
+
+
 .meters > div{
     display: flex;
     flex-flow: column nowrap;
-    padding: 6px;
+    align-self: flex-end;
     justify-items: center;
+    padding: 6px;
     flex: 1;
     width: auto;
-    height: auto;
+    height: 75%;
 }
 
 .meters > div:nth-child(3){
     flex: 1.6;
+    height: 95%;
+}
+
+
+.wpm div{
+    font-size: small;
+    font-weight: 600;
+}
+
+.wpm3{
+    font-size: 3.5em;
 }
 
 .meters > div > div:nth-child(1){
@@ -224,11 +246,6 @@ hr {
     height: 80%;
 }
 
-.wpm{
-    display: block;
-    color: white;
-    font-size: xxx-large;
-}
 
 .meters > div > div:nth-child(1) > svg{
     width: 100%;
@@ -250,14 +267,21 @@ hr {
 
 
 .meters > div > div:nth-child(2) > div:nth-child(1){
-    font-size: 1.5em;
+    font-size: 1.3em;
+    font-weight: 600;
 }
 
 
 .text {
     margin: 1%;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border: 2px lightgreen solid;
+    border-radius: 16px;
     color: white;
     scroll-behavior: smooth;
     font-size: 1.3rem;
@@ -287,6 +311,14 @@ main > div > div:nth-child(5){
 
 .error{
     color: white;
+}
+
+.hideAccuracy{
+    visibility: hidden;
+}
+
+.showAccuracy{
+    visibility: visible;
 }
 
 .typed{

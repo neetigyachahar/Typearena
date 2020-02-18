@@ -10,8 +10,8 @@ let charTyped;
 let started = false;
 let ended = false;
 let err_ack = false;
-let accracy = 0;
-let data = `We were the people. We lived in the blank white spaces at the edges of print. We were the people who were not in the papers. We lived in the blank white spaces at the edges of print.`;
+let accuracy = 0;
+let data = `In an interview on-stage at a conference in Utah on Friday, the Facebook CEO said he wouldn't launch a new company in the San Francisco Bay Area, long the tech capital of the United States - home to titans like Apple, Google, and Facebook itself.`;
 let lst = data.trim().split(' ');
 let text_len = data.trim().length;
 let limit = lst.length - 1;
@@ -23,11 +23,11 @@ lst.forEach((item, index) =>{
 });
 
 $('document').ready(()=>{
-    r1 = new Progress(1, {'name':'Neetigya', 'id': 0});
-    r2 = new Progress(2, {'name':'Neetigya', 'id': 0});
-    r3 = new Progress(3, {'name':'Neetigya', 'id': 0});
-    r4 = new Progress(4, {'name':'Neetigya', 'id': 0});
-    r5 = new Progress(5, {'name':'Neetigya', 'id': 0});
+    r1 = new Progress(1, {'name':'Jeff Bezos', 'id': 0});
+    r2 = new Progress(2, {'name':'Bill Gates', 'id': 0});
+    r3 = new Progress(3, {'name':'Mark Zuckerberg', 'id': 0});
+    r4 = new Progress(4, {'name':'Larry Page', 'id': 0});
+    r5 = new Progress(5, {'name':'Satya Nadella', 'id': 0});
 
     initializeText(data);
     start();
@@ -37,11 +37,6 @@ $('document').ready(()=>{
 
 });
 
-function immortalize(i){
-    if($(".ty").val().length <= lst[lst_ptr][word_ptr-1].length){
-        $(".ty").val(lst[lst_ptr][word_ptr-1]);
-    }
-}
 
 function error(){
     err++;
@@ -52,16 +47,22 @@ function timer(){
         setTimeout(()=>{
             tmr += 1;                
             wpm = Math.round(cc*12/tmr);
-            accracy = ((cd - err)*100/cd).toFixed(2);
-            if(accracy < 0){
-                accracy = 0;
+            accuracy = ((cd - err)*100/cd).toFixed(2);
+            if(accuracy < 0){
+                accuracy = 0;
             }
-            $('.wpm').text(`${wpm}`);
-            $('.error').text(`${accracy}%`);
+            r1.updateStats((wpm*2).toFixed(0), accuracy);
+            r2.updateStats((wpm/2.2).toFixed(0), accuracy);
+            r3.updateStats(wpm, accuracy);
+            r4.updateStats((wpm*1.2).toFixed(0), accuracy);
+            r5.updateStats((wpm/3).toFixed(0), accuracy);
             timer();
         }, 1000);
     }else{
         //after race end functions could be introduced here.
+
+        //display accuracy
+        $('.error').addClass('showAccuracy').removeClass('hideAccuracy');
         return;
     }
 };
@@ -106,11 +107,11 @@ function start(){
             cd += 1;
 
             movCursor(lst, lst_ptr, word_ptr);
-            r1.animateProgress(cd, text_len);
-            r2.animateProgress(cd, text_len);
+            r1.animateProgress(cd, text_len/2);
+            r2.animateProgress(cd, text_len*2.2);
             r3.animateProgress(cd, text_len);
-            r4.animateProgress(cd, text_len);
-            r5.animateProgress(cd, text_len);
+            r4.animateProgress(cd, text_len/1.2);
+            r5.animateProgress(cd, text_len*3);
 
             //check if last chracter of word is reached
             if(word_ptr == lst[lst_ptr].length){           
@@ -132,7 +133,6 @@ function start(){
             if(!err_ack){
                 err_ack= true;
                 error();
-                immortalize(word_ptr-1);
             }
         }
         }else{
@@ -149,11 +149,11 @@ class Progress{
         this.name = user.name;
         this.id = user.id;
         this.svgDes = new ProgressBar.Circle(this.index, {
-            strokeWidth: 4,
+            strokeWidth: 5,
             easing: 'easeInOut',
             duration: 0,
-            from: { color: 'rgba(255,255,255,1)' },
-            to: { color: 'rgba(255 ,0 ,0 ,1)' },
+            from: { color: 'rgba(77, 255, 77,1)' },
+            to: { color: 'rgba(0, 184, 0,1)' },
             step: function(state, circle, attachment) {
                 circle.path.setAttribute('stroke', state.color);
             },
@@ -174,8 +174,10 @@ class Progress{
         console.log('stoping blink...');
     }
 
-    updateWPM(s){
+    updateStats(wp, acc){
         //update wpm
+        $(`.wpm${this.i}`).html(`${wp}<br><div>WPM</div>`);
+        $(`.error${this.i}`).text(`${acc}%`);
     }
 
     animateProgress(written, total){
@@ -224,7 +226,7 @@ function movCursor(lst, lp, wp){
 }
 
 
-function bot(){
+function bot(t){
     let ptr = 0;
     setInterval(() => {
         if(ptr < data.length){
@@ -233,7 +235,7 @@ function bot(){
             $('.ty').trigger('input');
             ptr++;
         }
-    },100);
+    },t);
 }
 
 function teset(){
