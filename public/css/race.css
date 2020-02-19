@@ -60,7 +60,7 @@ main > div {
     align-items: center;
     width: 95%;
     height: 90%;
-    background-color: #1c1c1c;
+    background-color: #121212;
     border-radius: 22px;
 }
 
@@ -166,7 +166,7 @@ hr {
     border-radius: 16px;
     color: white;
     scroll-behavior: smooth;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     min-height: 100px;
     flex: 1;
 }
@@ -185,7 +185,7 @@ main > div > div:nth-child(5){
     background-color: rgba(255, 255, 255, 0.6);
     padding: 6px;
     padding-left: 10px;
-    font-size: 20px;
+    font-size: 26px;
     border-radius: 22px;
     outline: none;
     width: 80%; 

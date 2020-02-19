@@ -81,11 +81,25 @@ function start(){
 
         console.log(ty_data.val()+'|'+lst[lst_ptr].substring(0, word_ptr));
 
+        //Renters the correct value entered by the user when backspcae typed multiple times.
         if(subs(ty_data.val(), lst[lst_ptr].substring(0, word_ptr))){
+
+            //checks if there was any error or not.
+            if(err_ack){
+                
+                r3.animateProgress(cd, text_len);
+                $('.ty').css('background-color', 'rgba(255, 255, 255, 0.6)');
+
+                err_ack = false;
+                console.log('now no error');
+            }
+
             console.log(lst[lst_ptr].substring(0, word_ptr-1));
             $('.ty').val(lst[lst_ptr].substring(0, word_ptr-1));
             return;
         }
+
+
 
         //This code checks if inital spaces are added or not!
         if (!$('.ty').val().replace(/\s/g, '').length) {
@@ -97,13 +111,7 @@ function start(){
 
         //matches for the correct input
         if(ty_data.val() == lst[lst_ptr].substring(0, word_ptr)){
-
-            //checks if there was any error or not.
-            if(err_ack){
-                console.log('afdadfasdfadfasdfsadfsadfasdfasdfadsf');
-                err_ack = false;
-            }
-
+            
             cd += 1;
 
             movCursor(lst, lst_ptr, word_ptr);
@@ -132,6 +140,11 @@ function start(){
         }else{
             if(!err_ack){
                 err_ack= true;
+                
+                r3.svgDes.path.setAttribute('stroke', 'red');
+                $('.ty').css('background-color', 'rgb(230, 80, 80)');
+
+                console.log('We have an error');
                 error();
             }
         }
@@ -226,16 +239,40 @@ function movCursor(lst, lp, wp){
 }
 
 
-function bot(t){
+function bot(){
     let ptr = 0;
+    let done = 0;
+    let ip;
+    let d = 0;
+    let dat;
     setInterval(() => {
+        console.log('uppar', ptr);
         if(ptr < data.length){
-            $('.ty').val($('.ty').val()+data[ptr]);
+            if(ptr == 9 && done == 0){
+                done = 1;
+                ptr--;
+                ip = $('.ty').val()+'f';
+                dat = $('.ty').val();
+            }
+            else if(ptr == 9 && d == 0){
+                d = 1;
+                ptr--;
+                ip = dat;
+            }else{
+                ip = $('.ty').val()+data[ptr];
+            }
+            console.log('niche', ptr);
+            $('.ty').val(ip);
+
+            // if(ptr == 7 && done == 0){
+            //     $('.ty').css('background-color', 'rgba(255, 255, 255, 0.6)');
+            // }
+
             // let e = $.Event("keypress", { which: 65, keyCode: 65 });
             $('.ty').trigger('input');
             ptr++;
         }
-    },t);
+    },400);
 }
 
 function teset(){

@@ -24,7 +24,7 @@ html{
 body{
 line-height: 1;
 margin: 0;
-background-color: #121212;
+background-color: rgb(18, 17, 16);
 }
 .container{
     width: 100%;
@@ -91,7 +91,6 @@ button{
 img.uppermostlogo{
     display: block;
     max-width: 100%;
-
 }
 img.megaicons{
 max-width: 100%;
@@ -109,7 +108,7 @@ h1.uppermostheading{
 }
 
 p.uppermostpara{
-    color: black;
+    color: white;
     margin-top: 0;
     padding-bottom: 80px;
     margin: 0;
