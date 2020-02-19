@@ -55,7 +55,7 @@ nav li a {
 
 nav > div:nth-child(2) li:nth-child(2) a{
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
+    background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     box-shadow: 0px 0px 5px 6px #252525 inset;
     box-shadow: inset;
@@ -96,19 +96,24 @@ nav > div:nth-child(2) li:nth-child(2) a:hover{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 7.5em;
+    width: 8.9em;
     padding: 0px;
     margin:0;
     text-align: center;
-    margin-left: 150%;
+    margin-left: 120%;
+    
+    background: linear-gradient(45deg,  #28ABE0, #6AE91A);
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
 }
+
 
 .logo > img{
     /* display: block; */
     /* height: auto; */
-    width: 7.5em;
-    margin-top: 7px;
-    margin-bottom: 6px;
+    width: 9em;
+    /* margin-top: 2px;
+    margin-bottom: 2px; */
     /* height: 100%;*/
     /* width: 100%;  */
     /* min-height: 30%;
