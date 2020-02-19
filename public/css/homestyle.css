@@ -4,7 +4,14 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Lato', sans-serif;
 */
 /*############################ defaults ####################*/
-nav,header, footer{
+* {
+    font-family: 'Roboto', sans-serif;
+    /* user-select: none; */
+    box-sizing: border-box;
+    color: white;
+}
+
+header, footer{
     display: block;
 } 
 
@@ -17,7 +24,7 @@ html{
 body{
 line-height: 1;
 margin: 0;
-background-color: white;
+background-color: #121212;
 }
 .container{
     width: 100%;
@@ -40,7 +47,7 @@ background-color: white;
 
 p{
     line-height: 1.2;
-    font-family: 'Lato', sans-serif;
+    /* font-family: 'Lato', sans-serif; */
     font-size: 25px;
     max-width: 100%;
 }
@@ -58,112 +65,19 @@ p{
 .col-12 {width: 100%;}
 
 button{
+    margin-top: 20px;
     border-radius: 7px;
     font-size: 40px;
-    padding: 10px 20px;
+    padding: 0;
     box-shadow: 1px;
     border: none;
     text-align: center;
     color: white;
     background-color: black;
-    font-family: 'Ubuntu', sans-serif;
-    box-shadow: 0px 4px 9px rgba(87, 77, 77, 0.336);
+    /* font-family: 'Ubuntu', sans-serif; */
+    box-shadow: 0px 0px 10px 4px rgba(87, 77, 77, 0.336);
 }
 
-*{
-    box-sizing: border-box;
-}
-/*######################## nav bar ############################*/
-nav{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    background-color: #252525;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-}
-
-nav > div:nth-child(1){
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    width: 50%;
-}
-
-nav > div:nth-child(2){
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: center;
-    width: 50%;
-}
-
-nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    list-style-type: none; 
-    width: auto;
-    margin: 0;
-    padding: 0;
-}
-
-nav li { 
-    float: left;
-    text-align: center;
-    margin-right: 1vw;
-}
-
-nav li a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    font-size: x-large;
-    padding: 10px 16px;
-}
-
-nav > div:nth-child(2) li:nth-child(2) a{
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    box-shadow: 0px 0px 5px 6px #252525 inset;
-    box-shadow: inset;
-    border-radius: 22px;
-    padding: 12px 16px;
-    font-size: larger;
-    font-weight: 600;
-}
-
-
-nav > div:nth-child(2) li:nth-child(2) a:hover{
-    animation: gradienthover 0.2s ease 0s 1 normal forwards;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-@keyframes gradienthover{
-    100%{
-        box-shadow: 0px 0px 0px 0px #252525 inset;
-        border-radius: 0;
-        text-shadow: 0px 0px 20px #121212;
-    }
-}
- 
-nav li a:hover {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.10);
-}
 
 /*################# customs #########*/
 
@@ -206,13 +120,13 @@ p.featurepara{
     max-width: 100%;
     font-size: 20px;
     text-align: justify;
-    color: rgb(32, 32, 32);
+    color: white;
 }
 
 .col-9.uppermostheading{
     text-align: center;
     padding-left: 0px;
-    font-family: 'Ubuntu', sans-serif;
+    /* font-family: 'Ubuntu', sans-serif; */
     max-width: 100%;
     font-size: 40px;
     color: rgb(12, 12, 12);
@@ -222,7 +136,7 @@ p.featurepara{
 }
 .col-9.featurehead{
     padding-left: 20px;
-    font-family: 'Ubuntu', sans-serif;
+    /* font-family: 'Ubuntu', sans-serif; */
     max-width: fit-content;
     font-size: 22px;
     color: rgb(32, 32, 32);
@@ -248,10 +162,13 @@ p.featurepara{
 .col-6.halfcontainercard{
     border-radius: 20px;
     padding-bottom: 2%;
-    box-shadow: 0px 10px 15px rgba(87, 77, 77, 0.336);
+    padding-top: 2%;
+    padding-right: 2%;
+    background-color: #252525;
+    /* box-shadow: 0px 10px 15px rgba(87, 77, 77, 0.336); */
 }
 
-video.typeracingimage{
+video.typearenaimage{
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -281,7 +198,7 @@ button.featurebuttonyellow{
 }
 
 footer.foots {
-    background-color: rgb(13, 17, 16) ;
+    background-color: #252525;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -296,48 +213,46 @@ footer.foots ul{
 footer.foots ul lh{
     font-size: 25px;
     color:white;
-    font-family: 'Ubuntu', sans-serif;
+    /* font-family: 'Ubuntu', sans-serif; */
 }
 footer.foots ul li{
     font-size: 17px;
     color:white;
     text-align: left;
-    font-family: 'Righteous', cursive;
+    /* font-family: 'Righteous', cursive; */
 }
 label.foottext{
     color: white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
 }
 /*########## transition#########*/
-button.topmostbutton{ 
-    
+button.topmostbutton > a{ 
+    background-color: #252525;
     animation-play-state: paused;
     animation: fillalterantecolor 5s ease-in-out infinite ;
 }
 
 @keyframes fillalterantecolor{
     0% {
-        background: rgb(13, 17, 16);
     color: white;
     }
     33%{
-        color: rgb(111, 221, 243);
-        background:rgb(13, 17, 16);   
+        color: rgb(111, 221, 243);  
     }
     66%{
-        background: rgb(13, 17, 16);
     color: rgb(91, 233, 134);
     }
     100%{
-        background: rgb(13, 17, 16);
         color: white;
     }
 }
 
-.fade-in{
-    animation: fadeIn 6s;
-}
-.fade-in.appear{
-    opacity: 1;
+a{
+    display: block;
+    text-decoration: none;
+    margin: 0;
+    padding: 10px 20px;
+    width: 100%;
+    height: 100%;
 }
 /*################################*/

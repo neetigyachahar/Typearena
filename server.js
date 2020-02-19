@@ -17,7 +17,7 @@ app.get('/race', (req, res, next)=>{
 });
 
 app.all('/', (req, res, next)=>{
-    res.send('Welcome to the home page!!');
+    res.render('home');
 });
 
 //Connected Database (future) and start listening
