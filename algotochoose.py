@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+
 """
 Created on Tue Feb 11 16:00:00 2020
 @name: Algorithm to choose best paragraph from practice mode
 @author: AVINASH
 """
+
 #saari kaam ki nhi hai dar mat
 import numpy as np
 import matplotlib.pyplot as plt
@@ -30,13 +32,10 @@ def tokenpara(para):
 # a sample representing user top mistakes
 mistakes = ['open','rubbish','potter', 'watch', 'movie', 'action', 'disappoitment']
 
-
 #example\
 totalraces = 3210
 avgac = 94.32
 avgsp = 77.82
-
-
 
 # database is index with columns : [text;totalraceswithtext; avgaccuracy for text; avg speed for text]
 #calculating scores

@@ -6,10 +6,125 @@ font-family: 'Lato', sans-serif;
 /*############################ defaults ####################*/
 * {
     font-family: 'Roboto', sans-serif;
-    /* user-select: none; */
+    user-select: none;
     box-sizing: border-box;
     color: white;
+    /* border: 1px white dashed; */
 }
+
+/* =======================nav bar============================= */
+
+
+nav{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgb(18, 17, 16);
+    z-index: 10;
+}
+
+nav > div:nth-child(1){
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+nav > div:nth-child(2){
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style-type: none; 
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+nav li { 
+    float: left;
+    padding: 0;
+    text-align: center;
+    margin-right: 1vw;
+}
+
+nav li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: large;
+    padding: 16px 20px;
+}
+
+nav > div:nth-child(2) li:nth-child(2) a{
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    box-shadow: 0px 0px 5px 6px rgb(18, 17, 16) inset;
+    box-shadow: inset;
+    border-radius: 22px;
+    padding: 16px 20px;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 8.9em;
+    padding: 0px;
+    margin:0;
+    text-align: center;
+    margin-left: 120%;
+    background: linear-gradient(45deg,  #28ABE0, #6AE91A);
+    background-size: 200% 200%;
+    animation: gradient 8s ease infinite;
+}
+
+
+.logo > img{
+    /* display: block; */
+    /* height: auto; */
+    width: 9em;
+    /* margin-top: 2px;
+    margin-bottom: 2px; */
+    /* height: 100%;*/
+    /* width: 100%;  */
+    /* min-height: 30%;
+    min-width: 30%;
+    width: 30%;
+    height: 30%; */
+}
+
+/* ================================================================== */
 
 header, footer{
     display: block;
@@ -26,6 +141,12 @@ line-height: 1;
 margin: 0;
 background-color: rgb(18, 17, 16);
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+
+
 .container{
     width: 100%;
     margin: auto;

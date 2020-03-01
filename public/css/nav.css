@@ -1,11 +1,14 @@
 * {
     font-family: 'Roboto', sans-serif;
     user-select: none;
+    /* border: 1px white dashed; */
 }
 
 nav{
     display: flex;
     flex-direction: row;
+    padding-bottom: 5px;
+    padding-top: 5px;
     width: 100%;
     background-color: #252525;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -58,16 +61,10 @@ nav > div:nth-child(2) li:nth-child(2) a{
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     box-shadow: 0px 0px 5px 6px #252525 inset;
-    box-shadow: inset;
     border-radius: 22px;
-    padding: 16px 20px;
+    padding: 12px 20px;
     font-size: x-large;
     font-weight: 600;
-}
-
-
-nav > div:nth-child(2) li:nth-child(2) a:hover{
-    animation: gradienthover 0.2s ease 0s 1 normal forwards;
 }
 
 @keyframes gradient {
@@ -82,15 +79,6 @@ nav > div:nth-child(2) li:nth-child(2) a:hover{
     }
 }
 
-@keyframes gradienthover{
-    100%{
-        box-shadow: 0px 0px 0px 0px #252525 inset;
-        border-radius: 0;
-        text-shadow: 0px 0px 20px #121212;
-    }
-}
-
-
 .logo{
     display: flex;
     flex-direction: row;
@@ -101,7 +89,6 @@ nav > div:nth-child(2) li:nth-child(2) a:hover{
     margin:0;
     text-align: center;
     margin-left: 120%;
-    
     background: linear-gradient(45deg,  #28ABE0, #6AE91A);
     background-size: 200% 200%;
     animation: gradient 8s ease infinite;
