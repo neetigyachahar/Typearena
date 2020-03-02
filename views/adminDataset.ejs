@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset | Admin - Typearena</title>
+    <link rel="stylesheet" href="/css/adminDataset.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Squada+One&display=swap" rel="stylesheet">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="/" class="logo">
+                        <img src="/img/navlogo.svg" alt="logo" >
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a href="#">login</a>
+                </li>
+                <li>
+                    <a href="#">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>   
+    <section>
+        <aside>
+            <div>
+                Aside 1
+            </div>
+        </aside>
+        <main>
+            <div>
+                <h1>
+                    Dataset
+                </h1>
+                <div>
+                    <form action="/admin/dataset/upload" method="POST" enctype="multipart/form-data">
+                        Select a JSON file <br>
+                        <input type="file" name="dataset"> <br> <br>
+                        <button type="submit">send file</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <aside>
+            <div>
+                Aside 2
+            </div>
+        </aside>
+    </section> 
+    <footer>
+        Handcrafted in 🇮🇳 with ❤️
+    </footer>
+</body>
+</html>

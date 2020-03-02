@@ -164,10 +164,11 @@ hr {
     border: 2px lightgreen solid;
     border-radius: 16px;
     color: white;
+    overflow: hidden;
     scroll-behavior: smooth;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     min-height: 100px;
-    flex: 1;
+    flex: 1.2;
 }
 
 main > div > div:nth-child(5){

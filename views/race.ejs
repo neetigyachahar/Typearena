@@ -3,18 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Race here</title>
-    <link rel="stylesheet" href="css/race.css">
-    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="/css/race.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/signup.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Squada+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/077c16c1d1.js" crossorigin="anonymous"></script> 
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous">
     </script>
     <script src="/progressbar.js/dist/progressbar.js";></script>
-    <script src="js/race.js";></script>
+    <script src="/js/race.js";></script>
+    <script src="/js/signup.js"></script>
 </head>
 <body>
+    <div class='raceData' style="display: none; margin: 0; padding: 0;"><%=para%></div>
+    <div class="noSignUpPrompt">
+        <div>
+            <h3>Sign up <i id="cross" class="fas fa-times"></i></h3>
+            <div>
+                <form action="/signup" method="POST">
+                    <div>
+                        <input type="text" name="firstName" placeholder="First Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                        <input type="text" name="lastName" placeholder="Last Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                    </div>
+                    <div>
+                        <input type="email" name="emailId" placeholder="Email ID" spellcheck="false" required>
+                        <input type="password" name="password" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" spellcheck="false" required>
+                    </div>
+                    <button type="submit">Sign up</button>
+                </form>
+                <div></div>
+            </div>
+        </div>
+    </div>
     <nav>
         <div>
             <ul>

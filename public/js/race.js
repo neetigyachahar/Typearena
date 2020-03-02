@@ -11,18 +11,25 @@ let started = false;
 let ended = false;
 let err_ack = false;
 let accuracy = 0;
-let data = `In an interview on-stage at a conference in Utah on Friday, the Facebook CEO said he wouldn't launch a new company in the San Francisco Bay Area, long the tech capital of the United States - home to titans like Apple, Google, and Facebook itself.`;
-let lst = data.trim().split(' ');
-let text_len = data.trim().length;
-let limit = lst.length - 1;
-let r1,r2, r3, r4, r5;
-
-lst.forEach((item, index) =>{
-    if(index != lst.length -1)
-          lst[index] = item+' ';
-});
+let data;
+let lst;
+let text_len;
+let limit;
+let r1, r2, r3, r4, r5;
 
 $('document').ready(()=>{
+
+    data = $('.raceData').text();
+    lst = data.trim().split(' ');
+    text_len = data.trim().length;
+    limit = lst.length - 1;
+    r1,r2, r3, r4, r5;
+    
+    lst.forEach((item, index) =>{
+        if(index != lst.length -1)
+              lst[index] = item+' ';
+    });
+
     r1 = new Progress(1, {'name':'Jeff Bezos', 'id': 0});
     r2 = new Progress(2, {'name':'Bill Gates', 'id': 0});
     r3 = new Progress(3, {'name':'Mark Zuckerberg', 'id': 0});
@@ -79,7 +86,7 @@ function start(){
         charTyped = String.fromCharCode(evt.which || evt.keyCode);
         ty_data = $('.ty'); 
 
-        console.log(ty_data.val()+'|'+lst[lst_ptr].substring(0, word_ptr));
+        // console.log(ty_data.val()+'|'+lst[lst_ptr].substring(0, word_ptr));
 
         //Renters the correct value entered by the user when backspcae typed multiple times.
         if(subs(ty_data.val(), lst[lst_ptr].substring(0, word_ptr))){
@@ -91,10 +98,9 @@ function start(){
                 $('.ty').css('background-color', 'rgba(255, 255, 255, 0.6)');
 
                 err_ack = false;
-                console.log('now no error');
+                // console.log('now no error');
             }
 
-            console.log(lst[lst_ptr].substring(0, word_ptr-1));
             $('.ty').val(lst[lst_ptr].substring(0, word_ptr-1));
             return;
         }
@@ -184,7 +190,7 @@ class Progress{
     }
 
     blinkStop() {
-        console.log('stoping blink...');
+        // console.log('stoping blink...');
     }
 
     updateStats(wp, acc){
@@ -194,7 +200,11 @@ class Progress{
     }
 
     animateProgress(written, total){
-        this.svgDes.animate(written/total);
+        let r = written/total;
+        if(r > 1){
+            r = 1;
+        }
+        this.svgDes.animate(r);
     }
     
     test(){
@@ -217,7 +227,6 @@ function subs(a, b){
 }
 
 function initializeText(data){
-    console.log(data.slice(0, 1));
     $('.cursor').text(data.slice(0, 1));
     $('.tbt').text(data.slice(1, data.length));
 }
@@ -246,7 +255,6 @@ function bot(){
     let d = 0;
     let dat;
     setInterval(() => {
-        console.log('uppar', ptr);
         if(ptr < data.length){
             if(ptr == 9 && done == 0){
                 done = 1;
@@ -261,7 +269,6 @@ function bot(){
             }else{
                 ip = $('.ty').val()+data[ptr];
             }
-            console.log('niche', ptr);
             $('.ty').val(ip);
 
             // if(ptr == 7 && done == 0){

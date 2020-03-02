@@ -1,0 +1,140 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
+}
+
+html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #121212;
+}
+
+
+/* ================Section CSS Starts================= */
+
+body > section{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    flex: 1;
+}
+
+body > section > aside{
+    display: flex;
+    width: 20%;
+    height: 100%;
+    padding: 0;
+    word-wrap: break-word;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+}
+
+aside > div {
+    display: block;
+    width: 100%;
+    margin: auto;
+    color: white;
+    text-align: center;
+}
+
+
+main > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    height: 90%;
+    background-color: #1c1c1c;
+    border-radius: 22px;
+}
+
+main > div > h1{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin: 0;
+    width: 95%;
+    color: white;
+    font-size: 4rem;
+}
+
+main > div > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex: 5;
+    margin: 0;
+    width: 100%;
+}
+
+
+/* 
+main > div > div > form > input{
+    display: inline-block;
+    content: "Select file";
+    background-color: red;
+} */
+
+/* ================Section CSS Ends================= */
+
+
+/* =================Footer CSS Starts=================== */
+
+footer{
+    text-align: center;
+    height: 12vh;
+    line-height: 12vh;
+    color: white;
+    background-color: #1C1C1C;
+    align-items: center;
+}
+
+/* =====================Media Queries================ */
+
+@media only screen and (max-width: 555px) {
+    
+    body > section {
+        display: flex;
+        flex-flow: column nowrap;
+        margin: 0;
+        height: 10%;
+    }
+
+    body > section > aside:nth-child(1){
+        display: none;
+    }
+
+    body > section > aside:nth-child(2){
+        width: 100%;
+        margin: 0;
+        height: 5px;
+    }
+
+    main{
+        width: 95%;
+        margin: 3%;
+    }
+    
+    .ty{
+        min-width: 50px;
+        max-width: 180px;
+        font-size: 16px;
+    }
+}
