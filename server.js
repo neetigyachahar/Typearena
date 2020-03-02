@@ -10,7 +10,6 @@ const MONGODB_URI = "mongodb+srv://neetigya:pvx8RHA8CQb8O07l@cluster0-gdzqa.mong
 
 
 //Initailising utilities
-app.set('port', 3000 || process.env.PORT );
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,7 +28,7 @@ app.all('/', (req, res, next)=>{
 mongoose
   .connect(MONGODB_URI, {useUnifiedTopology: true,  useCreateIndex: true, useNewUrlParser: true})
   .then(result => {
-    app.listen(app.get('port'),()=>{
+    app.listen(process.env.PORT || 5000,()=>{
         console.log('Server is ready to rock!');
     });
   })
