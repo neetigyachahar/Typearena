@@ -7,25 +7,14 @@ const ParagraphSchema = mongoose.Schema({
     },
     about: {
         title:{
-            type: String,
-            required: true
+            type: String
         },
         url: {
             type: String,
-            required: true,
             unique: true
         },
         author:{
             type: String
-        },
-        publisher:{
-            type: String
-        },
-        customer_reviews:{
-            type: Number
-        },
-        stars:{
-            type: Number
         }
     },
     avgSpeed:{

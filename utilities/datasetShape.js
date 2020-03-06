@@ -2,17 +2,23 @@ module.exports = data =>{
     let para = [];
     return new Promise(cb =>{
         data.forEach(d => {
+            if(!d.title){
+                d.title = null;
+            }
+            if(!d.url){
+                d.url = null;
+            }
+            if(!d.Author){
+                d.author = null;
+            }
             para.push({
-                text: d.description,
+                text: d.text,
                 about:{
                     title: d.title,
                     url: d.url,
-                    author: d.author,
-                    publisher: d.publisher,
-                    customer_review_count: d.customer_reviews,
-                    stars: d.stars
+                    author: d.Author
                 },
-                abgSpeed: 0,
+                avgSpeed: 0,
                 races: 0,
                 topSpeed:{
                     speed: 0

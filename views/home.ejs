@@ -18,20 +18,28 @@
     <body>
         <div class="noSignUpPrompt">
             <div>
-                <h3>Sign up <i id="cross" class="fas fa-times"></i></h3>
+                <h3>Create an account<i id="cross" class="fas fa-times"></i></h3>
                 <div>
+                    <div class="signupBanner">
+                       With a Type Arena account, <br>get stared with a journy from novice to legendary typing skills. <br>The cost and pain of the journey is on us!
+                       <!-- <img src="/img/typewriter.svg" alt="typewriter"> -->
+                    </div> 
+                    <hr style = "width:0; height: 85%; margin: 0; opacity: 0.5;">
                     <form action="/signup" method="POST">
                         <div>
                             <input type="text" name="firstName" placeholder="First Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                        </div>
+                        <div>
                             <input type="text" name="lastName" placeholder="Last Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
                         </div>
                         <div>
                             <input type="email" name="emailId" placeholder="Email ID" spellcheck="false" required>
+                        </div>
+                        <div>
                             <input type="password" name="password" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" spellcheck="false" required>
                         </div>
                         <button type="submit">Sign up</button>
                     </form>
-                    <div></div>
                 </div>
             </div>
         </div>

@@ -25,12 +25,18 @@
     background-color: #1c1c1c;
     border-radius: 10px;
     box-shadow: 0px 0px 6px 8px black;
-    width: 40%;
-    height: 50%;
+    width: 50%;
+    height: 60%;
     max-height: 541px;
     min-width: 425px;
     min-height: 485px;
     animation: signUpPromptIn 0.3s ease-in 0s forwards;
+
+    background-image: url('/img/typewriter.svg');
+    background-position: 140% 92%;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    background-size: 130%;
 }
 
 @keyframes signUpPromptIn{
@@ -50,6 +56,7 @@
     padding-left: 3%;
     color: white;
     font-size: xx-large;
+    background-color: rgba(0,0,0,0.4);
 }
 
 .signup > div > h3 > i{
@@ -59,40 +66,47 @@
 
 .signup > div > div{
     display: flex;
-    flex-direction: column;
-
+    flex-direction: row;
     flex: 6;
+    background-color: rgba(0,0,0,0.4);
     /* border: 1px white solid; */
 }
 
 .signup > div > div > form{
     /* all: initial; */
     display: flex;
+    flex: 1;
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    padding-top: 20px;
     /* padding: 15px; */
-    flex: 3.5;
     /* border: 1px white solid; */
 }
 
-.signup > div > div > form > div{
-    display: flex;
-    flex-direction: row;
-    /* border: 1px white dashed; */
+.signupBanner{
     flex: 1;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 35px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2vw;
+    overflow:hidden;
 }
 
+
+
 .signup > div > div > form > div> input{
-    margin: auto;
+    margin: 10px;
     padding-top: 8px;
     font-size: 24px;
-    max-width: 40%;
+    max-width: 70%;
     color: white;
     background-color: transparent;
     outline: none;
     border: none;
-    border-bottom: 2px rgba(255,255,255, 0.56) solid;
+    border-bottom: 2px rgba(255,255,255, 0.7) solid;
 }
 
 .signup > div > div > form > button{
@@ -100,14 +114,14 @@
     /* flex: 1.5; */
     width: 9rem;
     color: white;
-    background: linear-gradient(-45deg, #d86b4ace, #c7336ce1, #1f91bbe0, #1eb995d8);
+    background: linear-gradient(-45deg, #bb5c3f, #b32e61, #1e85aa, #1ba786);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     border-radius: 22px;
     padding: 10px 16px;
     font-size: x-large;
     font-weight: 600;
-    box-shadow: 0px 0px 10px 4px rgba(87, 77, 77, 0.336);
+    box-shadow: 0px 0px 10px 4px rgba(87, 77, 77);
     border: none;
 }
 

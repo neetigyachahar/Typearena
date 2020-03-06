@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Race here</title>
     <link rel="stylesheet" href="/css/race.css">
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/signup.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Squada+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Squada+One|Open+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/077c16c1d1.js" crossorigin="anonymous"></script> 
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -21,20 +22,28 @@
     <div class='raceData' style="display: none; margin: 0; padding: 0;"><%=para%></div>
     <div class="noSignUpPrompt">
         <div>
-            <h3>Sign up <i id="cross" class="fas fa-times"></i></h3>
+            <h3>Create an account<i id="cross" class="fas fa-times"></i></h3>
             <div>
+                <div class="signupBanner">
+                   With a Type Arena account, <br>get stared with a journy from novice to legendary typing skills. <br>The cost and pain of the journey is on us!
+                   <!-- <img src="/img/typewriter.svg" alt="typewriter"> -->
+                </div> 
+                <hr style = "width:0; height: 85%; margin: 0; opacity: 0.5;">
                 <form action="/signup" method="POST">
                     <div>
                         <input type="text" name="firstName" placeholder="First Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                    </div>
+                    <div>
                         <input type="text" name="lastName" placeholder="Last Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
                     </div>
                     <div>
                         <input type="email" name="emailId" placeholder="Email ID" spellcheck="false" required>
+                    </div>
+                    <div>
                         <input type="password" name="password" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" spellcheck="false" required>
                     </div>
                     <button type="submit">Sign up</button>
                 </form>
-                <div></div>
             </div>
         </div>
     </div>
@@ -90,10 +99,9 @@
                             <div class='error error2 hideAccuracy'></div>
                         </div>
                     </div>
-                    <div  id="progress3">
+                    <div id="progress3">
                         <div>
-                            <div class="wpm wpm3">
-                                
+                            <div class="wpm wpm3">   
                             </div>
                         </div>
                         <div>
@@ -125,12 +133,14 @@
                     </div>
                 </div>
                 <br>
-                <div class='text'>
+                <div  class='text'>
                     <span class='typed'></span><span class="cursor"></span><span class="tbt"></span>
+                    <div id='Author'>- <a target="_blank" href="https://www.google.com/search?q=<%=author%>"><%=author%></a></div>
                     </div>
                 <br>
                 <div>
-                    <input class="ty" type="text"><br>
+                    <input class="ty" type="text">
+                    <div class="below-text-input"><i class="fas fa-cog fa-lg"></i><i class="far fa-chart-bar fa-lg"></i></div>
                 </div>
             </div>
         </main>

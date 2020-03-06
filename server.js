@@ -24,7 +24,7 @@ app.all('/', (req, res, next)=>{
     res.render('home');
 });
 
-//Connected Database (future) and start listening
+//Connected Database and start listening
 mongoose
   .connect(MONGODB_URI, {useUnifiedTopology: true,  useCreateIndex: true, useNewUrlParser: true})
   .then(result => {

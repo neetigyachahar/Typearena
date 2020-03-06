@@ -168,7 +168,7 @@ class Progress{
         this.name = user.name;
         this.id = user.id;
         this.svgDes = new ProgressBar.Circle(this.index, {
-            strokeWidth: 5,
+            strokeWidth: 6,
             easing: 'easeInOut',
             duration: 0,
             from: { color: 'rgba(77, 255, 77,1)' },
@@ -248,7 +248,7 @@ function movCursor(lst, lp, wp){
 }
 
 
-function bot(){
+function bot(t){
     let ptr = 0;
     let done = 0;
     let ip;
@@ -279,9 +279,5 @@ function bot(){
             $('.ty').trigger('input');
             ptr++;
         }
-    },400);
-}
-
-function teset(){
-    
+    },t);
 }
