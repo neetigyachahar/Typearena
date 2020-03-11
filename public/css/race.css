@@ -89,7 +89,7 @@ hr {
     display: block;
     color: white;
     font-family: 'Squada One', cursive;
-    font-size: xx-large;
+    font-size: 2.25rem;
 }
 
 
@@ -111,12 +111,12 @@ hr {
 
 
 .wpm div{
-    font-size: small;
+    font-size: 0.75rem;
     font-weight: 600;
 }
 
 .wpm3{
-    font-size: 3.5em;
+    font-size: 3.5rem;
 }
 
 .meters > div > div:nth-child(1){
@@ -143,13 +143,13 @@ hr {
 
 .meters > div > div:nth-child(2) > div{
     display: inline;
-    font-size: large;
+    font-size: 1.00rem;
     padding: 6px;
 }
 
 
 .meters > div > div:nth-child(2) > div:nth-child(1){
-    font-size: 1.3em;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 
@@ -183,7 +183,7 @@ hr {
 }
 
 #Author a{
-    font-size: large;
+    font-size: 1.00rem;
     color: white;
     text-decoration: none;
 }
@@ -202,7 +202,7 @@ main > div > div:nth-child(5){
     background-color: rgba(255, 255, 255, 0.6);
     padding: 6px;
     padding-left: 10px;
-    font-size: 26px;
+    font-size: 1.625rem;
     border-radius: 16px;
     outline: none;
     width: 80%; 
@@ -295,6 +295,6 @@ footer{
     .ty{
         min-width: 50px;
         max-width: 180px;
-        font-size: 16px;
+        font-size: 1rem;
     }
 }

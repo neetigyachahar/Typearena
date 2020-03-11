@@ -33,10 +33,10 @@
     animation: signUpPromptIn 0.3s ease-in 0s forwards;
 
     background-image: url('/img/typewriter.svg');
-    background-position: 140% 92%;
-    background-attachment: local;
+    background-position: 110% 92%;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 130%;
+    background-size: 200%;
 }
 
 @keyframes signUpPromptIn{
