@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+html, body{
+    margin: 0;
+    padding: 0;
+    padding-left: 14%;
+    overflow: hidden;
+}
+body::-webkit-scrollbar {
+    width: 0;
+}
+   
+html::-webkit-scrollbar {
+    width: 0;
+}
+   
+
+#world {
+  background: transparent;
+  overflow:hidden;
+}

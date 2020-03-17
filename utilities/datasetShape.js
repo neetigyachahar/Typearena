@@ -5,9 +5,6 @@ module.exports = data =>{
             if(!d.title){
                 d.title = null;
             }
-            if(!d.url){
-                d.url = null;
-            }
             if(!d.Author){
                 d.author = null;
             }
@@ -15,7 +12,6 @@ module.exports = data =>{
                 text: d.text,
                 about:{
                     title: d.title,
-                    url: d.url,
                     author: d.Author
                 },
                 avgSpeed: 0,

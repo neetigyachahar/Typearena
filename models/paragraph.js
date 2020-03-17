@@ -10,8 +10,7 @@ const ParagraphSchema = mongoose.Schema({
             type: String
         },
         url: {
-            type: String,
-            unique: true
+            type: String
         },
         author:{
             type: String
@@ -28,7 +27,7 @@ const ParagraphSchema = mongoose.Schema({
             type: Number
         },
         userID:{
-            type: mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId, 
             ref: 'User'
         }
     }

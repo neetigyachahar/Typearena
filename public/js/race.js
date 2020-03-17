@@ -32,15 +32,12 @@ $('document').ready(()=>{
 
     r1 = new Progress(1, {'name':'Jeff Bezos', 'id': 0});
     r2 = new Progress(2, {'name':'Bill Gates', 'id': 0});
-    r3 = new Progress(3, {'name':'Mark Zuckerberg', 'id': 0});
+    r3 = new Progress(3, {'name':'Mark Zucke', 'id': 0});
     r4 = new Progress(4, {'name':'Larry Page', 'id': 0});
-    r5 = new Progress(5, {'name':'Satya Nadella', 'id': 0});
+    r5 = new Progress(5, {'name':'Satya Nade', 'id': 0});
 
     initializeText(data);
     start();
-
-
-
 
 });
 

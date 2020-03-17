@@ -2,23 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dataset | Admin - Typearena</title>
+    <title>Oops | Typearena</title>
     <link href="/css/nav.css" rel="stylesheet">
-    <link href="/css/profile.css" rel="stylesheet">
+    <link href="/css/error.css" rel="stylesheet">
     <link href="/css/signup.css" rel="stylesheet">
     <link href="/css/login.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/adminDataset.css">
-    <link rel="stylesheet" href="/css/nav.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Squada+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu&display=swap" rel="stylesheet">   
+    <script src="https://kit.fontawesome.com/077c16c1d1.js" crossorigin="anonymous"></script> 
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous">
     </script>
-    <script src="https://kit.fontawesome.com/077c16c1d1.js" crossorigin="anonymous"></script> 
     <script src="/js/signup.js"></script>
     <script src="/js/login.js"></script>
-    <script src="/js/profile.js"></script>
 </head>
 <body>
     <div class="noSignUpPrompt">
@@ -102,10 +100,24 @@
         <aside>
             <div>
                 Aside 1 <br> Advertisement
-            </div>
+            </div> 
         </aside>
         <main>
             <div>
+                <div>
+                    <div>
+                        <%- msg %>
+                    </div>
+                </div>
+                <section id="errorAnimation">
+                    <div id="credits">
+                        <div id="instructions">Double click and hold to pet your lion</span></div>
+                        <p>Prints on <a class="society6" href="https://society6.com/yakudoo/"  target="blank">society6</a> | <a href="https://codepen.io/Yakudoo/"  target="blank">my other codepens</a> | <a href="https://www.epic.net" target="blank">epic.net</a></p>
+                    </div>
+                    <iframe src="/errorAnimation">
+                    </iframe>
+                </section>
+
             </div>
         </main>
         <aside>

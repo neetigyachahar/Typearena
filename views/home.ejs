@@ -1,8 +1,10 @@
 <!DOCTYPE html>
     <head>
         <title>Typearena</title>
+        <link href="/css/nav.css" rel="stylesheet">
         <link href="/css/homestyle.css" rel="stylesheet">
         <link href="/css/signup.css" rel="stylesheet">
+        <link href="/css/login.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato|Ubuntu&display=swap" rel="stylesheet">   
         <link href="https://fonts.googleapis.com/css?family=Roboto|Squada+One&display=swap" rel="stylesheet">   
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -12,9 +14,10 @@
          integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
          crossorigin="anonymous">
         </script>
-         <script src="/js/fadeeffect.js"></script>
-         <script src="/js/signup.js"></script>
-        </head>
+        <script src="/js/fadeeffect.js"></script>
+        <script src="/js/signup.js"></script>
+        <script src="/js/login.js"></script>
+    </head>
     <body>
         <div class="noSignUpPrompt">
             <div>
@@ -25,20 +28,41 @@
                        <!-- <img src="/img/typewriter.svg" alt="typewriter"> -->
                     </div> 
                     <hr style = "width:0; height: 85%; margin: 0; opacity: 0.5;">
-                    <form action="/signup" method="POST">
+                    <form class="signupForm" action="/signup" method="POST">
+                        <div class="signupStatus"></div>
                         <div>
-                            <input type="text" name="firstName" placeholder="First Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                            <input type="text" name="name" placeholder="Full Name" pattern="[A-Za-z]+" maxlength="20" title="Only english characters allowed." spellcheck="false" required>
                         </div>
                         <div>
-                            <input type="text" name="lastName" placeholder="Last Name" pattern="[A-Za-z]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                            <input type="text" name="username" placeholder="Set username" pattern="[a-zA-Z0-9-]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
                         </div>
                         <div>
-                            <input type="email" name="emailId" placeholder="Email ID" spellcheck="false" required>
+                            <input type="email" name="email" placeholder="Email ID" spellcheck="false" required>
                         </div>
                         <div>
                             <input type="password" name="password" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" spellcheck="false" required>
                         </div>
-                        <button type="submit">Sign up</button>
+                            <button type="button">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="noLoginPrompt">
+            <div>
+                <h3>Login<i id="crossLogin" class="fas fa-times"></i></h3>
+                <div>
+                    <form class="loginForm" method="POST">
+                        <div class="loginStatus"></div>
+                        <div>
+                            <input type="text" name="username" placeholder="username" pattern="[a-zA-Z0-9-]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                        </div>
+                        <div>
+                            <input type="password" name="password" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" spellcheck="false" required>
+                        </div>
+                        <div>
+                            <a class="forgotPassowrd" href="/forgotPassword">Forgot Password</a>
+                        </div>
+                            <button type="button">Login</button>
                     </form>
                 </div>
             </div>
@@ -56,14 +80,23 @@
             <div>
                 <ul>
                     <li>
-                        <a href="#">login</a>
+                        <% if(logged){ %>
+                            <a href="/profile"><%= name %></a>
+                        <% }else{ %>
+                            <a class='navLogin' href="#">login</a>
+                        <% } %>
                     </li>
                     <li>
-                        <a href="#">Sign up</a>
+                        <% if(logged){ %>
+                            <a href="/logout">Log out</a>
+                        <% }else{ %>
+                            <a class="navSignup" href="#">Sign up</a>
+                        <% } %>
                     </li>
                 </ul>
             </div>
         </nav>   
+        <div class="belowNav"></div>
         <div class="container">
             <div class="row">
                 <div class="col-6">

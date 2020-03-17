@@ -1,6 +1,9 @@
 $('document').ready(()=>{
+    if(!$('.navSignup').length){
+        return;
+    }
     let signup = $('.noSignUpPrompt');
-    let nav = $('nav > div:nth-child(2) li:nth-child(2) a');   
+    let nav = $('.navSignup');   
     let close = $('#cross');
     if(nav.length){
         nav.click((evt)=>{
@@ -13,4 +16,26 @@ $('document').ready(()=>{
         });
 
     }
+
+
+    $('.signupForm > button').click(evn=>{
+        console.log('hello');
+        var credentials = $(".signupForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/signup",
+            data: credentials,
+            success: function(data) {
+                $('.signupStatus').text(data.message);
+                if(data.redirect){
+                    $('.signupStatus').css('color', 'white');
+                    $('.signupStatus').css('font-size', '1.2rem');
+                    $('.signupStatus').text(data.message);
+                    setTimeout(()=>{
+                        location.reload(true);
+                    }, 2000);
+                }
+            }
+        });
+    });
 });

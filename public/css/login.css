@@ -1,13 +1,13 @@
-.signup *{
+.login *{
     margin: 0;
     padding: 0;
 }
 
-.noSignUpPrompt{
+.noLoginPrompt{
     display: none;
 }
 
-.signup{
+.login{
     position: fixed;
     display: flex;
     flex-direction: row;
@@ -19,18 +19,18 @@
     z-index: 9999;
 }
 
-.signup > div{
+.login > div{
     display: flex;
     flex-direction: column;
     background-color: #1c1c1c;
     border-radius: 10px;
-    box-shadow: 0px 0px 6px 8px black;
-    width: 50%;
+    /* box-shadow: 0px 0px 6px 8px black; */
+    width: 20%;
     height: 60%;
     max-height: 541px;
-    min-width: 525px;
+    min-width: 425px;
     min-height: 485px;
-    animation: signUpPromptIn 0.3s ease-in 0s forwards;
+    animation: loginPromptIn 0.3s ease-in 0s forwards;
     background-image: url('/img/typewriter.svg');
     background-position: 170% 120%;
     background-attachment: fixed;
@@ -38,7 +38,7 @@
     background-size: 100%;
 }
 
-@keyframes signUpPromptIn{
+@keyframes loginPromptIn{
     from{
         opacity: 0;
     }
@@ -47,7 +47,7 @@
     }
 }
 
-.signup > div > h3{
+.login > div > h3{
     display: flex;
     flex: 1;
     align-items: center;
@@ -58,12 +58,12 @@
     background-color: rgba(0,0,0,0.7);
 }
 
-.signup > div > h3 > i{
+.login > div > h3 > i{
     cursor: pointer;
     padding-right: 3.5%;
 }
 
-.signup > div > div{
+.login > div > div{
     display: flex;
     flex-direction: row;
     flex: 6;
@@ -71,7 +71,7 @@
     /* border: 1px white solid; */
 }
 
-.signup > div > div > form{
+.login > div > div > form{
     /* all: initial; */
     display: flex;
     flex: 1;
@@ -83,70 +83,50 @@
     /* border: 1px white solid; */
 }
 
-.signupBanner{
-    flex: 1;
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding: 35px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
-    overflow:hidden;
-}
-
-
-
-.signup > div > div > form > div> input{
+.login > div > div > form > div> input{
     margin: 10px;
     padding-top: 8px;
     font-size: 24px;
     max-width: 70%;
     color: white;
-    background-color: transparent;
+    background-color: transparent !important;
     outline: none;
     border: none;
     border-bottom: 2px rgba(255,255,255, 0.7) solid;
 }
 
-.signup > div > div > form > button{
+.login > div > div > form > button{
     margin: auto;
     /* flex: 1.5; */
-    width: 9rem;
+    width: 7rem;
+    background: transparent;
+    border: 2px white solid;
     color: white;
-    background: linear-gradient(-45deg, #bb5c3f, #b32e61, #1e85aa, #1ba786);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
     border-radius: 22px;
-    padding: 10px 16px;
+    padding: 8px 14px;
     font-size: x-large;
     font-weight: 600;
-    box-shadow: 0px 0px 10px 4px rgba(87, 77, 77);
-    border: none;
 }
 
-.signupStatus{
+.forgotPassowrd{
+    color: white;
+    font-size: 80%;
+    text-decoration: underline;
+}
+
+.loginStatus{
     color: red;
     height: 30px;
     text-align: center;
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
 
-.signup > div > div > form > button:hover{
+.login > div > div > form > button:hover{
     cursor: pointer;
+    box-shadow: 0px 0px 5px 6px rgba(255,255,255,0.1);
 }
 
-.signup > div > div > div{
+.login > div > div > div{
     /* border: 1px white solid; */
     flex: 1;
 }
