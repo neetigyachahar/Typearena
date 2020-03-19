@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/css/signup.css">
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Squada+One|Open+Sans&display=swap">
-    <script src="https://kit.fontawesome.com/077c16c1d1.js" crossorigin="anonymous"></script> 
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -25,6 +24,7 @@
 </head>
 <body>
     <div class='raceData' style="display: none; margin: 0; padding: 0;"><%=para%></div>
+    <input class="userID" type="hidden" value= "<%=id%>" >
     <%- include('partials/navLoginSignup') %> 
     <section>
         <aside>
@@ -98,7 +98,7 @@
                 <br>
                 <div>
                     <input class="ty" type="text">
-                    <div class="below-text-input"><i class="fas fa-cog fa-lg"></i><i class="far fa-chart-bar fa-lg"></i></div>
+                    <div class="below-text-input"><img src="/img/settingsIcon.svg" alt="Race settings"><img src="/img/chart.svg" alt="chart"></div>
                 </div>
             </div>
         </main>

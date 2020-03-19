@@ -23,18 +23,15 @@ $('document').ready(()=>{
     lst = data.trim().split(' ');
     text_len = data.trim().length;
     limit = lst.length - 1;
-    r1,r2, r3, r4, r5;
     
     lst.forEach((item, index) =>{
         if(index != lst.length -1)
               lst[index] = item+' ';
     });
 
-    // r1 = new Progress(1, {'name':'Jeff Bezos', 'id': 0});
-    // r2 = new Progress(2, {'name':'Bill Gates', 'id': 0});
+    
+ 
     r3 = new Progress(3, {'name':'You', 'id': 0});
-    // r4 = new Progress(4, {'name':'Larry Page', 'id': 0});
-    // r5 = new Progress(5, {'name':'Satya Nade', 'id': 0});
 
     initializeText(data);
     start();

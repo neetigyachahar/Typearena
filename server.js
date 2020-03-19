@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
+// const guestModel = require('./models/guestUser');
+const randomString = require('randomstring');
 const socketService = require('./utilities/socketService');
 const session = require('express-session');
 const socketSession = require('express-socket.io-session');
@@ -28,13 +30,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
 //storing sessions
-const sessionConfig = session({secret: 'my secret', resave: false, saveUninitialized: false, store: store});
-app.use(sessionConfig);
+const sessionConfig = {secret: 'my secret', resave: false, saveUninitialized: false, store: store};
+app.use(session(sessionConfig));
 
-//sharing sessions to socket.io
-socketService.IO().of('/race').use(socketSession(session(sessionConfig), {
-  autoSave: true
-}));
+app.use((req, res, next)=>{
+  req.session['user'] = {
+    _id: randomString.generate(10),
+    name: 'Guest',
+    isLoggedIn: false
+  }
+  next();
+});
 
 app.use('/admin', adminRoutes);
 
@@ -59,11 +65,25 @@ mongoose
   .connect(MONGODB_URI, {useUnifiedTopology: true,  useCreateIndex: true, useNewUrlParser: true})
   .then(result => {
     const server = app.listen(process.env.PORT || 5000,()=>{
-        console.log('Server is ready to rock!');
+      console.log('Server is ready to rock!');
+
+      //start Socket listening
+      socketService.init(server, ()=>{
+
+        //start raceOrganiser
+        require('./backendService/raceOrganiser')();
+
+        //sharing sessions to socket.io
+        socketService.IO().of('/race').use(socketSession(session(sessionConfig), {
+          secret: 'my secret',
+          resave: false, 
+          saveUninitialized: false
+        }));
+
+      });
+
     });
-    socketService.init(server, ()=>{
-      require('./backendService/raceOrganiser')();
-    });
+
   })
   .catch(err => {
     console.log(err);

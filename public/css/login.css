@@ -58,7 +58,7 @@
     background-color: rgba(0,0,0,0.7);
 }
 
-.login > div > h3 > i{
+.login > div > h3 > img{
     cursor: pointer;
     padding-right: 3.5%;
 }

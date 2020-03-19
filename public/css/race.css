@@ -220,15 +220,15 @@ main > div > div:nth-child(5){
     height: 100%;
 }
 
-.below-text-input i{
+.below-text-input img{
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px white solid;
     border-radius: 70%;
-    width: 1.2rem;
-    height: 1.2rem;
-    padding: 8px;
+    width: 1.8rem;
+    height: 1.8rem;
+    padding: 4px;
     margin-right: 10px;
     cursor: pointer;
     color: white;
