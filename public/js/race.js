@@ -2,7 +2,7 @@ let cd = 0;
 let cc = 0;
 let tmr = 0;
 let wrd = 0;
-let wpm = 140;  //little high value to get right speed of meter
+let wpm;
 let word_ptr = 1;
 let lst_ptr = 0;
 let err = 0;
@@ -30,11 +30,11 @@ $('document').ready(()=>{
               lst[index] = item+' ';
     });
 
-    r1 = new Progress(1, {'name':'Jeff Bezos', 'id': 0});
-    r2 = new Progress(2, {'name':'Bill Gates', 'id': 0});
-    r3 = new Progress(3, {'name':'Mark Zucke', 'id': 0});
-    r4 = new Progress(4, {'name':'Larry Page', 'id': 0});
-    r5 = new Progress(5, {'name':'Satya Nade', 'id': 0});
+    // r1 = new Progress(1, {'name':'Jeff Bezos', 'id': 0});
+    // r2 = new Progress(2, {'name':'Bill Gates', 'id': 0});
+    r3 = new Progress(3, {'name':'You', 'id': 0});
+    // r4 = new Progress(4, {'name':'Larry Page', 'id': 0});
+    // r5 = new Progress(5, {'name':'Satya Nade', 'id': 0});
 
     initializeText(data);
     start();
@@ -55,11 +55,15 @@ function timer(){
             if(accuracy < 0){
                 accuracy = 0;
             }
-            r1.updateStats((wpm*2).toFixed(0), accuracy);
-            r2.updateStats((wpm/2.2).toFixed(0), accuracy);
+            // r1.updateStats((wpm*2).toFixed(0), accuracy);
+            // r2.updateStats((wpm/2.2).toFixed(0), accuracy);
             r3.updateStats(wpm, accuracy);
-            r4.updateStats((wpm*1.2).toFixed(0), accuracy);
-            r5.updateStats((wpm/3).toFixed(0), accuracy);
+            // r4.updateStats((wpm*1.2).toFixed(0), accuracy);
+            // r5.updateStats((wpm/3).toFixed(0), accuracy);
+
+            if(ended){
+                afterEnd();
+            }
             timer();
         }, 1000);
     }else{
@@ -118,11 +122,11 @@ function start(){
             cd += 1;
 
             movCursor(lst, lst_ptr, word_ptr);
-            r1.animateProgress(cd, text_len/2);
-            r2.animateProgress(cd, text_len*2.2);
+            // r1.animateProgress(cd, text_len/2);
+            // r2.animateProgress(cd, text_len*2.2);
             r3.animateProgress(cd, text_len);
-            r4.animateProgress(cd, text_len/1.2);
-            r5.animateProgress(cd, text_len*3);
+            // r4.animateProgress(cd, text_len/1.2);
+            // r5.animateProgress(cd, text_len*3);
 
             //check if last chracter of word is reached
             if(word_ptr == lst[lst_ptr].length){           
@@ -150,9 +154,7 @@ function start(){
                 console.log('We have an error');
                 error();
             }
-        }
-        }else{
-            //something
+         }
         }
     });
 }
@@ -207,6 +209,15 @@ class Progress{
     test(){
         
     }
+}
+
+function afterEnd(){
+    console.log(wpm, accuracy);
+    // $.post("/typeEngine/raceEnded",
+    //         {
+
+    //         }
+    // );
 }
 
 function subs(a, b){

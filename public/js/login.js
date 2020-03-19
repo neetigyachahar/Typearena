@@ -2,7 +2,6 @@ $('document').ready(()=>{
     if(!$('.navLogin').length){
         return;
     }
-    console.log('adfads');
     let login = $('.noLoginPrompt');
     let nav = $('.navLogin');   
     let close = $('#crossLogin');

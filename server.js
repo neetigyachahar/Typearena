@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
+const socketService = require('./utilities/socketService');
 const session = require('express-session');
+const socketSession = require('express-socket.io-session');
 const SessionInMongoDB = require('connect-mongodb-session')(session);
 const MONGODB_URI = "mongodb+srv://neetigya:pvx8RHA8CQb8O07l@cluster0-gdzqa.mongodb.net/typearena?retryWrites=true&w=majority"
 const store = new SessionInMongoDB({
@@ -24,10 +26,15 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
-app.use(
-  session({secret: 'my secret', resave: false, saveUninitialized: false, store: store})
-);
 
+//storing sessions
+const sessionConfig = session({secret: 'my secret', resave: false, saveUninitialized: false, store: store});
+app.use(sessionConfig);
+
+//sharing sessions to socket.io
+socketService.IO().of('/race').use(socketSession(session(sessionConfig), {
+  autoSave: true
+}));
 
 app.use('/admin', adminRoutes);
 
@@ -51,8 +58,11 @@ app.all('*', loginVerify('<div style="font-size: 100px;"> 404 </div><br>Resource
 mongoose
   .connect(MONGODB_URI, {useUnifiedTopology: true,  useCreateIndex: true, useNewUrlParser: true})
   .then(result => {
-    app.listen(process.env.PORT || 5000,()=>{
+    const server = app.listen(process.env.PORT || 5000,()=>{
         console.log('Server is ready to rock!');
+    });
+    socketService.init(server, ()=>{
+      require('./backendService/raceOrganiser')();
     });
   })
   .catch(err => {
