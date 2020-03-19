@@ -195,8 +195,8 @@ class Progress{
         $(`.error${this.i}`).text(`${acc}%`);
     }
 
-    animateProgress(written, total){
-        let r = written/total;
+    animateProgress(written){
+        let r = written/text_len;
         if(r > 1){
             r = 1;
         }
