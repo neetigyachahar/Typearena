@@ -1,44 +1,3 @@
-let cd = 0;
-let cc = 0;
-let tmr = 0;
-let wrd = 0;
-let wpm;
-let word_ptr = 1;
-let lst_ptr = 0;
-let err = 0;
-let charTyped;
-let started = false;
-let ended = false;
-let err_ack = false;
-let accuracy = 0;
-let data;
-let lst;
-let text_len;
-let limit;
-let r1, r2, r3, r4, r5;
-
-$('document').ready(()=>{
-
-    data = $('.raceData').text();
-    lst = data.trim().split(' ');
-    text_len = data.trim().length;
-    limit = lst.length - 1;
-    
-    lst.forEach((item, index) =>{
-        if(index != lst.length -1)
-              lst[index] = item+' ';
-    });
-
-    
- 
-    r3 = new Progress(3, {'name':'You', 'id': 0});
-
-    initializeText(data);
-    start();
-
-});
-
-
 function error(){
     err++;
 }
@@ -62,6 +21,7 @@ function timer(){
                 afterEnd();
             }
             timer();
+            
         }, 1000);
     }else{
         //after race end functions could be introduced here.
@@ -80,8 +40,9 @@ function start(){
             timer();
         }
         
-        evt = evt || window.event;
-        charTyped = String.fromCharCode(evt.which || evt.keyCode);
+        //Gets the input value when input event is fired
+        // evt = evt || window.event;
+        // charTyped = String.fromCharCode(evt.which || evt.keyCode);
         ty_data = $('.ty'); 
 
         // console.log(ty_data.val()+'|'+lst[lst_ptr].substring(0, word_ptr));
@@ -92,7 +53,7 @@ function start(){
             //checks if there was any error or not.
             if(err_ack){
                 
-                r3.animateProgress(cd, text_len);
+                r3.animateProgress(cd);
                 $('.ty').css('background-color', 'rgba(255, 255, 255, 0.6)');
 
                 err_ack = false;
@@ -119,11 +80,11 @@ function start(){
             cd += 1;
 
             movCursor(lst, lst_ptr, word_ptr);
-            // r1.animateProgress(cd, text_len/2);
-            // r2.animateProgress(cd, text_len*2.2);
-            r3.animateProgress(cd, text_len);
-            // r4.animateProgress(cd, text_len/1.2);
-            // r5.animateProgress(cd, text_len*3);
+            // r1.animateRacer(cd, text_len/2);
+            // r2.animateRacer(cd, text_len*2.2);
+            r3.animateProgress(cd);
+            // r4.animateRacer(cd, text_len/1.2);
+            // r5.animateRacer(cd, text_len*3);
 
             //check if last chracter of word is reached
             if(word_ptr == lst[lst_ptr].length){           
@@ -147,7 +108,6 @@ function start(){
                 
                 r3.svgDes.path.setAttribute('stroke', 'red');
                 $('.ty').css('background-color', 'rgb(230, 80, 80)');
-
                 console.log('We have an error');
                 error();
             }
@@ -157,7 +117,7 @@ function start(){
 }
 
 
-class Progress{
+class Racer{
     constructor(i, user){ //user has name and ID
         this.i = i;
         this.index = `#progress${i} > div:nth-child(1)`;
@@ -188,6 +148,32 @@ class Progress{
     blinkStop() {
         // console.log('stoping blink...');
     }
+    
+    static initializeNewUsers(userList){
+        userList.forEach(element => {
+            if(element.id !== myID){
+                if(!addedUsers.filter(a => a.id == element.id).length){
+                    let slot;
+                    if(addedUsers.length + 1 >= 3){
+                        slot = addedUsers.length + 2;
+                    }else{
+                        slot = addedUsers.length + 1;
+                    }
+                    addedUsers.push(new Racer(slot, {name: element.name, id: element.id}));
+                }
+            }
+        });
+        let disconnectedIDs = addedUsers.map( a => a.id).filter(e => !userList.map( a => a.id).includes(e));
+        console.log(disconnectedIDs);
+        if(disconnectedIDs.length){
+            addedUsers = addedUsers.map( a => a.id).filter(e => userList.map( a => a.id).includes(e));
+            disconnectedIDs.forEach(a => a.disconnected());
+        }
+    }
+
+    disconnected(){
+        console.log(this.id);
+    }
 
     updateStats(wp, acc){
         //update wpm
@@ -203,9 +189,6 @@ class Progress{
         this.svgDes.animate(r);
     }
     
-    test(){
-        
-    }
 }
 
 function afterEnd(){
@@ -237,6 +220,7 @@ function initializeText(data){
 }
 
 function movCursor(lst, lp, wp){
+    console.log(`${lst} | ${lp} | ${wp}`);
     if(lp == lst.length-1 && wp == lst[lp].length){
         $('.typed').text(lst.slice(0, lp).join('')+lst[lp].substring(0, wp));  
         $('.cursor').text('');

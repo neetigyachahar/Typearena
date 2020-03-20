@@ -113,14 +113,15 @@ module.exports = ()=>{
             socket.join(room);
             socketRoomName = room;
             check45users(room);
-            io.of('/race').in(room).emit('welcome', allUserInRoomData(room));
+            io.of('/race').in(room).emit('roomInOut', allUserInRoomData(room));
             // console.log(hotel[0].connectedUsers());
         });
         // console.log(socket.handshake.session);
 
         socket.on('disconnect', () =>{
             destroyEmptyRoom(socketRoomName);
-            console.log(hotel[0].connectedUsers());
+            io.of('/race').in(socketRoomName).emit('roomInOut', allUserInRoomData(socketRoomName));
+            // console.log(hotel[0].connectedUsers());
         });
     });
 } 

@@ -34,10 +34,12 @@ const sessionConfig = {secret: 'my secret', resave: false, saveUninitialized: fa
 app.use(session(sessionConfig));
 
 app.use((req, res, next)=>{
-  req.session['user'] = {
-    _id: randomString.generate(10),
-    name: 'Guest',
-    isLoggedIn: false
+  if(!req.session.isLoggedIn){
+    req.session['user'] = {
+      _id: randomString.generate(10),
+      name: 'Guest',
+      isLoggedIn: false
+    }
   }
   next();
 });

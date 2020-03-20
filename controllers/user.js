@@ -53,7 +53,7 @@ exports.login = (req, res, next)=>{
                             req.session.isLoggedIn = true;
                             req.session.user = user;
                             res.json({
-                                message: `Welcome ${user.name}!`,
+                                message: `Welcome ${req.session.user.name}!`,
                                 redirect: true
                             });
                         }
