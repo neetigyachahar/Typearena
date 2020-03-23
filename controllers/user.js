@@ -18,12 +18,11 @@ exports.signup = (req, res, next)=>{
             });
             newUser
                 .save()
-                .then(result =>{
-                    console.log('result');
-                    res.json({
-                        message: `Welcome ${result.name}!`,
-                        redirect: true
-                    });
+                .then(userData =>{
+                    console.log(addedUser);
+                    req.session.isLoggedIn = true;
+                    req.session.user = userData;
+                    res.redirect('/');
                 });
         })
         .catch((err) => {

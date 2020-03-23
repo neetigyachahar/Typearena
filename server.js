@@ -19,8 +19,8 @@ const store = new SessionInMongoDB({
 //Routes
 const adminRoutes = require('./routes/admin');
 const user = require('./routes/user');
+const race = require('./routes/race');
 
-const raceCon = require('./controllers/race.js');
 const loginVerify = require('./middleware/loginVerify');
 
 //Initailising utilities
@@ -35,6 +35,10 @@ app.use(session(sessionConfig));
 
 app.use((req, res, next)=>{
   if(!req.session.isLoggedIn){
+    req.session.isLoggedIn = false;
+  }
+
+  if(!req.session.user){
     req.session['user'] = {
       _id: randomString.generate(10),
       name: 'Guest',
@@ -48,7 +52,7 @@ app.use('/admin', adminRoutes);
 
 app.use('/', user);
 
-app.get('/race', raceCon.race);
+app.use('/race', race);
 
 app.get('/errorAnimation', (req, res, next)=>{
   res.render('errorAnimation');
@@ -73,7 +77,7 @@ mongoose
       socketService.init(server, ()=>{
 
         //start raceOrganiser
-        require('./backendService/raceOrganiser')();
+        require('./backendService/raceOrganiser').startService();
 
         //sharing sessions to socket.io
         socketService.IO().of('/race').use(socketSession(session(sessionConfig), {

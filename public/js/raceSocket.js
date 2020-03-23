@@ -21,9 +21,9 @@ let addedUsers = [];
 let myID;
 let userID;
 
-const socket = io.connect('http://localhost:5000/race');
 
 $('document').ready(()=>{
+    const socket = io.connect('https://typearena.herokuapp.com/race');
 
     //Initialize text
     data = $('.raceData').text();
@@ -43,28 +43,44 @@ $('document').ready(()=>{
     
     
     r3 = new Racer(3, {name: myName, 'id': myID});
-
+    
     start();
     
+    socket.emit('shoutUsersInRoom');
 
     socket.on('roomInOut', function(newRacer){
         console.log(newRacer);
         Racer.initializeNewUsers(newRacer);
     });
 
-    socket.on('startRace', ()=>{
-        console.log('race bhaga');
+    // socket.on('startRace', ()=>{
+    //     console.log('race bhaga');
+    // });
+
+    // socket.on('wpm', data =>{
+    //     // r1.animateProgress(cd);
+    //     // r2.animateProgress(cd);
+    //     // r4.animateProgress(cd);
+    //     // r5.animateProgress(cd);
+    // });
+    $(window).bind('beforeunload',function(){
+        if(socket.connected){
+            socket.disconnect();
+        }
+    });
+    
+    socket.on('connect', ()=>{
+        console.log('SOCKET CONNECTED');
     });
 
-    socket.on('wpm', data =>{
-        // r1.animateProgress(cd);
-        // r2.animateProgress(cd);
-        // r4.animateProgress(cd);
-        // r5.animateProgress(cd);
+    socket.on('disconnect', ()=>{
+        console.log('Arre nikal diya yaar');
+        window.location = 'https://typearena.herokuapp.com/';
     });
+    
+    socket.on('error', error=>{
+        console.log(error);
+    });
+
 });
 
-
-getMeSlot = (id) => {
-
-}

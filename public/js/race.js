@@ -163,16 +163,19 @@ class Racer{
                 }
             }
         });
-        let disconnectedIDs = addedUsers.map( a => a.id).filter(e => !userList.map( a => a.id).includes(e));
+        let disconnectedIDs = addedUsers.filter(e => !userList.map( a => a.id).includes(e.id));
         console.log(disconnectedIDs);
         if(disconnectedIDs.length){
-            addedUsers = addedUsers.map( a => a.id).filter(e => userList.map( a => a.id).includes(e));
+            addedUsers = addedUsers.filter(e => userList.map( a => a.id).includes(e.id));
+
             disconnectedIDs.forEach(a => a.disconnected());
         }
     }
 
     disconnected(){
         console.log(this.id);
+        $(`.wpm${this.i}`).html(`User<br>Left`);
+        $(`.error${this.i}`).text(``);
     }
 
     updateStats(wp, acc){

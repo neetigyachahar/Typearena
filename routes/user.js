@@ -1,4 +1,5 @@
 const path = require('path');
+
 const express = require('express');
 const router = express.Router();
 
@@ -6,6 +7,7 @@ const user = require('../controllers/user');
 
 const signVaild = require('../middleware/signupValidator');
 const loginVerify = require('../middleware/loginVerify');
+const raceOrganiser = require('../backendService/raceOrganiser');
 
 router.get('/', (req, res, next)=>{
     if(req.session.isLoggedIn){
@@ -24,6 +26,6 @@ router.get('/profile', loginVerify('Login to see your profile!'), user.profile);
 
 router.post('/signup', signVaild.email, signVaild.username, user.signup);
 router.post('/login', user.login);
-router.get('/logout', loginVerify('No user is logged in!'), user.logout);
+router.get('/logout', loginVerify('No user is logged in!'), raceOrganiser.disconnectThroughLogout, user.logout);
 
 module.exports = router;
