@@ -17,7 +17,7 @@ $('document').ready(()=>{
 
 
         $('.loginForm > button').click(evn =>{
-            console.log('hello');
+            $('.loginStatus').text('');
             var credentials = $(".loginForm").serialize();
             $.ajax({
                 type: "POST",

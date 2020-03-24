@@ -62,6 +62,7 @@ app.all('*', loginVerify('<div style="font-size: 100px;"> 404 </div><br>Resource
   res.render('error', {
     logged: req.session.isLoggedIn,
     name: req.session.user.name,
+    avgWPM: req.session.user.avgWPM10,
     msg: "Resource not found. <br>Error: 404"
   });
 });

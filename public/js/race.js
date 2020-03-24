@@ -13,7 +13,11 @@ function timer(){
             }
             // r1.updateStats((wpm*2).toFixed(0), accuracy);
             // r2.updateStats((wpm/2.2).toFixed(0), accuracy);
-            r3.updateStats(wpm, accuracy);
+            socket.emit('wpm', {
+                id: myID,
+                wpm: wpm,
+                progress: (cd/text_len)
+            })
             // r4.updateStats((wpm*1.2).toFixed(0), accuracy);
             // r5.updateStats((wpm/3).toFixed(0), accuracy);
 
@@ -25,20 +29,18 @@ function timer(){
         }, 1000);
     }else{
         //after race end functions could be introduced here.
-
         //display accuracy
-        $('.error').addClass('showAccuracy').removeClass('hideAccuracy');
         return;
     }
 };
 
 function start(){
+    $('.ty').css('border', 'none');
+    $('.ty').css('background-color', 'rgba(255, 255, 255, 0.6)');
+    $('.ty').prop('disabled', false);
+    $('.ty').focus();
     $('.ty').bind('input',(evt)=>{
         if(!ended){
-        if(!started){
-            started = true;
-            timer();
-        }
         
         //Gets the input value when input event is fired
         // evt = evt || window.event;
@@ -53,7 +55,7 @@ function start(){
             //checks if there was any error or not.
             if(err_ack){
                 
-                r3.animateProgress(cd);
+                addedUsers.filter(a => a.id === myID)[0].animateProgress(cd/text_len);
                 $('.ty').css('background-color', 'rgba(255, 255, 255, 0.6)');
 
                 err_ack = false;
@@ -82,7 +84,7 @@ function start(){
             movCursor(lst, lst_ptr, word_ptr);
             // r1.animateRacer(cd, text_len/2);
             // r2.animateRacer(cd, text_len*2.2);
-            r3.animateProgress(cd);
+            // r3.animateProgress(cd);
             // r4.animateRacer(cd, text_len/1.2);
             // r5.animateRacer(cd, text_len*3);
 
@@ -105,10 +107,10 @@ function start(){
         }else{
             if(!err_ack){
                 err_ack= true;
-                
-                r3.svgDes.path.setAttribute('stroke', 'red');
+
+
                 $('.ty').css('background-color', 'rgb(230, 80, 80)');
-                console.log('We have an error');
+                // console.log('We have an error');
                 error();
             }
          }
@@ -124,7 +126,7 @@ class Racer{
         this.name = user.name;
         this.id = user.id;
         this.svgDes = new ProgressBar.Circle(this.index, {
-            strokeWidth: 6,
+            strokeWidth: 6.5,
             easing: 'easeInOut',
             duration: 0,
             from: { color: 'rgba(77, 255, 77,1)' },
@@ -153,18 +155,15 @@ class Racer{
         userList.forEach(element => {
             if(element.id !== myID){
                 if(!addedUsers.filter(a => a.id == element.id).length){
-                    let slot;
-                    if(addedUsers.length + 1 >= 3){
-                        slot = addedUsers.length + 2;
-                    }else{
-                        slot = addedUsers.length + 1;
-                    }
+
+                    let slot = addedUsers.length + 1;
                     addedUsers.push(new Racer(slot, {name: element.name, id: element.id}));
+
                 }
             }
         });
         let disconnectedIDs = addedUsers.filter(e => !userList.map( a => a.id).includes(e.id));
-        console.log(disconnectedIDs);
+        // console.log(disconnectedIDs);
         if(disconnectedIDs.length){
             addedUsers = addedUsers.filter(e => userList.map( a => a.id).includes(e.id));
 
@@ -173,19 +172,21 @@ class Racer{
     }
 
     disconnected(){
-        console.log(this.id);
-        $(`.wpm${this.i}`).html(`User<br>Left`);
+        // console.log(this.id);
+        this.animateProgress(0);
         $(`.error${this.i}`).text(``);
     }
 
-    updateStats(wp, acc){
-        //update wpm
+    updateWPM(wp){
         $(`.wpm${this.i}`).html(`${wp}<br><div>WPM</div>`);
+    }
+    
+    updateAccuracy(acc){
         $(`.error${this.i}`).text(`${acc}%`);
+        $(`.error${this.i}`).addClass('showAccuracy').removeClass('hideAccuracy');
     }
 
-    animateProgress(written){
-        let r = written/text_len;
+    animateProgress(r){
         if(r > 1){
             r = 1;
         }
@@ -195,12 +196,12 @@ class Racer{
 }
 
 function afterEnd(){
-    console.log(wpm, accuracy);
-    // $.post("/typeEngine/raceEnded",
-    //         {
-
-    //         }
-    // );
+    // console.log(wpm, accuracy);
+    socket.emit('raceEnd', {
+        id: myID,
+        wpm: wpm,
+        accuracy: accuracy
+    });
 }
 
 function subs(a, b){
@@ -223,7 +224,7 @@ function initializeText(data){
 }
 
 function movCursor(lst, lp, wp){
-    console.log(`${lst} | ${lp} | ${wp}`);
+    // console.log(`${lst} | ${lp} | ${wp}`);
     if(lp == lst.length-1 && wp == lst[lp].length){
         $('.typed').text(lst.slice(0, lp).join('')+lst[lp].substring(0, wp));  
         $('.cursor').text('');

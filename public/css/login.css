@@ -31,7 +31,7 @@
     min-width: 425px;
     min-height: 485px;
     animation: loginPromptIn 0.3s ease-in 0s forwards;
-    background-image: url('/img/typewriter.svg');
+    background-color: rgba(255,255,255, 0.24);
     background-position: 170% 120%;
     background-attachment: fixed;
     background-repeat: no-repeat;

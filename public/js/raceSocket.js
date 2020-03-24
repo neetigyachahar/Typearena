@@ -20,67 +20,110 @@ let addedUsers = [];
 
 let myID;
 let userID;
+let socket;
 
 
-$('document').ready(()=>{
-    const socket = io.connect('https://typearena.herokuapp.com/race');
+$('document').ready(() => {
+    socket = io.connect('https://typearena.herokuapp.com/race');
 
     //Initialize text
     data = $('.raceData').text();
     lst = data.trim().split(' ');
     text_len = data.trim().length;
     limit = lst.length - 1;
-    
-    lst.forEach((item, index) =>{
-        if(index != lst.length -1)
-              lst[index] = item+' ';
+
+    lst.forEach((item, index) => {
+        if (index != lst.length - 1)
+            lst[index] = item + ' ';
     });
     initializeText(data);
 
     //get me
     myID = $('.userID').val();
     myName = $('.userName').val();
-    
-    
-    r3 = new Racer(3, {name: myName, 'id': myID});
-    
-    start();
-    
+
+
+    addedUsers.push(new Racer(3, { name: myName, 'id': myID }));
+
     socket.emit('shoutUsersInRoom');
 
-    socket.on('roomInOut', function(newRacer){
-        console.log(newRacer);
+    socket.on('roomInOut', function (newRacer) {
         Racer.initializeNewUsers(newRacer);
     });
 
-    // socket.on('startRace', ()=>{
-    //     console.log('race bhaga');
-    // });
+    socket.on('startRace', time => {
+        // console.log('race bhaga', time);
+        raceTimer(5);
+        socket.on('wpm', data => {
+            let thisUser = addedUsers.filter(a => a.id == data.id)[0];
+            thisUser.updateWPM(data.wpm);
+            thisUser.animateProgress(data.progress);
+        });
 
-    // socket.on('wpm', data =>{
-    //     // r1.animateProgress(cd);
-    //     // r2.animateProgress(cd);
-    //     // r4.animateProgress(cd);
-    //     // r5.animateProgress(cd);
-    // });
-    $(window).bind('beforeunload',function(){
-        if(socket.connected){
+        let first = true;
+        socket.on('raceEnd', data => {
+            let thisUser = addedUsers.filter(a => a.id == data.id)[0];
+            thisUser.updateAccuracy(data.accuracy);
+            if (first) {
+                first = false;
+                if (data.id == myID) {
+                    confettiAnimator();
+                }
+            }
+        });
+    });
+
+
+    $(window).bind('beforeunload', function () {
+        if (socket.connected) {
             socket.disconnect();
         }
     });
-    
-    socket.on('connect', ()=>{
+
+    socket.on('connect', () => {
         console.log('SOCKET CONNECTED');
     });
 
-    socket.on('disconnect', ()=>{
-        console.log('Arre nikal diya yaar');
+    socket.on('disconnect', time => {
+        alert('You have been disconnected!');
         window.location = 'https://typearena.herokuapp.com/';
     });
-    
-    socket.on('error', error=>{
+
+    socket.on('error', error => {
         console.log(error);
     });
 
 });
 
+raceTimer = time => {
+
+    setTimeout(() => {
+        $('#timer').text(time);
+        if (time >= 1) {
+            raceTimer(time - 1);
+        } else if (time == 0) {
+            if (!started) {
+                started = true;
+                start();
+                timer();
+                $('#timer').text('');
+            }
+        }
+    }, 1000);
+
+}
+
+confettiAnimator = () => {
+    // var confettiElement = document.getElementById('my-canvas');
+    let confettiSettings = {
+        target: document.getElementsByClassName('confetti')[0],
+        rotate: true,
+        clock: 50
+    };
+    let confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+
+    setTimeout(() => {
+        confetti.clear();
+    }, 2000);
+}

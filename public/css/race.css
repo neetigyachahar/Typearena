@@ -53,6 +53,14 @@ aside > div {
     text-align: center;
 }
 
+.confetti{
+    pointer-events: none;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
 
 main > div {
     display: flex;
@@ -71,6 +79,7 @@ hr {
 }
 
 .meters{
+    position: relative;
     display: flex;
     flex-wrap: nowrap;
     /* align-content: center; */
@@ -83,6 +92,19 @@ hr {
     /* height: 300px; */
     flex: 1.4;
     overflow: hidden;
+}
+
+#timer{
+    width: 100px;
+    height: 40px;
+    display: inline-block;
+    position: absolute;
+    right: -10px;
+    margin: 0;
+    padding: 0;
+    top: -5px;
+    font-size: 1.6rem;
+    font-weight: 800;
 }
 
 .wpm{
@@ -106,7 +128,7 @@ hr {
     height: 75%;
 }
 
-.meters > div:nth-child(3){
+.meters > div:nth-child(4){
     flex: 1.6;
     height: 95%;
 }
@@ -201,8 +223,8 @@ main > div > div:nth-child(5){
 }
 
 .ty {
-    border: none;
-    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px rgba(255, 255, 255, 0.3) solid;
+    background-color: transparent;
     padding: 6px;
     padding-left: 10px;
     font-size: 1.25rem;

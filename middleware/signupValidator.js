@@ -1,11 +1,9 @@
 const user = require('../models/user');
 
 exports.email = (req, res, next)=>{
-    console.log('Howdy!');
     user
         .findOne({email: req.body.email})
         .then(user => {
-            console.log(user);
             if(user){
                 res.json({
                     message: "email ID is already registered."
@@ -20,7 +18,7 @@ exports.email = (req, res, next)=>{
 
 exports.username = (req, res, next)=>{
     user
-        .findOne({username: req.body.username})
+        .findOne({username: req.body.usernameSignup})
         .then((user) => {
             if(user){
                 res.json({

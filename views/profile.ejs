@@ -1,5 +1,5 @@
     <%- include('partials/head') %>
-    <title>Dataset | Admin - Typearena</title>
+    <title><%=user.username%> | Typearena</title>
     <link href="/css/profile.css" rel="stylesheet">
     <script src="/js/profile.js"></script>
 </head>
@@ -11,8 +11,18 @@
                 Aside 1 <br> Advertisement
             </div>
         </aside>
-        <main>
+        <main class="content">
             <div>
+                <h1><%=user.name%></h1>
+                <div>
+                    <div>Username: <%=user.username%></div>
+                    <div>Email: <%=user.email%></div>
+                    <div>Total wins: <%=user.totalWins%></div>
+                    <div>Best speed: <%=user.bestWPM%> WPM</div>
+                    <div>Last 10 race average speed: <%=user.avgWPM10%> WPM</div>
+                    <div>Last race speed: <%=user.lastWPM%> WPM</div>
+                    <div>Total races: <%=user.totalRaces%></div>
+                </div>
             </div>
         </main>
         <aside>

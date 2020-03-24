@@ -19,7 +19,8 @@ $('document').ready(()=>{
 
 
     $('.signupForm > button').click(evn=>{
-        console.log('hello');
+        $('.signupStatus').text('');
+
         var credentials = $(".signupForm").serialize();
         $.ajax({
             type: "POST",
@@ -27,14 +28,14 @@ $('document').ready(()=>{
             data: credentials,
             success: function(data) {
                 $('.signupStatus').text(data.message);
-                // if(data.redirect){
-                //     $('.signupStatus').css('color', 'white');
-                //     $('.signupStatus').css('font-size', '1.2rem');
-                //     $('.signupStatus').text(data.message);
-                //     setTimeout(()=>{
-                //         location.reload(true);
-                //     }, 2000);
-                // }
+                if(data.redirect){
+                    $('.signupStatus').css('color', 'white');
+                    $('.signupStatus').css('font-size', '1.2rem');
+                    $('.signupStatus').text(data.message);
+                    setTimeout(()=>{
+                        location.reload(true);
+                    }, 2000);
+                }
             }
         });
     });

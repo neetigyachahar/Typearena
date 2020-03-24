@@ -21,12 +21,14 @@
     <script src="/js/race.js";></script>
     <script src="/js/signup.js"></script>
     <script src="/js/login.js"></script>
+    <script src="/confetti-js/dist/index.min.js"></script>
 </head>
 <body>
     <div class='raceData' style="display: none; margin: 0; padding: 0;"><%=para%></div>
     <input class="userID" type="hidden" value= "<%=id%>" >
     <input class="userName" type="hidden" value= "<%=name%>" >
     <%- include('partials/navLoginSignup') %> 
+    <canvas class="confetti"></canvas>
     <section>
         <aside>
             <div>
@@ -36,6 +38,8 @@
         <main>
             <div>
                 <div class="meters">
+                    <div id="timer">
+                    </div>
                     <div id="progress1">
                         <div>
                             <div class="wpm wpm1">
@@ -98,7 +102,7 @@
                     </div>
                 <br>
                 <div>
-                    <input class="ty" type="text">
+                    <input class="ty" type="text" disabled>
                     <div class="below-text-input"><img src="/img/settingsIcon.svg" alt="Race settings"><img src="/img/chart.svg" alt="chart"></div>
                 </div>
             </div>

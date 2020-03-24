@@ -3,13 +3,12 @@ const brcypt = require('bcryptjs');
 
 exports.signup = (req, res, next)=>{
     const name  = req.body.name;
-    const username = req.body.username;
+    const username = req.body.usernameSignup;
     const email = req.body.email;
-    const password = req.body.password;
+    const password = req.body.passwordSignup;
     brcypt
     .hash(password, 12)
     .then((hashedPassword) => {
-        // console.trace(hashedPassword);
             const newUser = new User({
                 name,
                 username,
@@ -19,10 +18,12 @@ exports.signup = (req, res, next)=>{
             newUser
                 .save()
                 .then(userData =>{
-                    console.log(addedUser);
                     req.session.isLoggedIn = true;
                     req.session.user = userData;
-                    res.redirect('/');
+                    res.json({
+                        message: `Welcome ${newUser.name}!`,
+                        redirect: true
+                    });
                 });
         })
         .catch((err) => {
@@ -67,8 +68,16 @@ exports.logout = (req, res, next)=>{
 }
 
 exports.profile = (req, res, next) =>{
-    res.render('profile', {
-        logged: req.session.isLoggedIn,
-        name: req.session.user.name
-    });
+    User
+        .findById(req.session.user._id)
+        .then(user =>{
+            res.render('profile', {
+                logged: req.session.isLoggedIn,
+                name: req.session.user.name,
+                avgWPM: req.session.user.avgWPM10,  
+                user
+            });
+        })
+        .catch(err => console.log(err));
+
 }
