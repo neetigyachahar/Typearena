@@ -202,6 +202,10 @@ function afterEnd(){
         wpm: wpm,
         accuracy: accuracy
     });
+
+    $('.ty').css('border', '1px rgba(255, 255, 255, 0.3) solid;');
+    $('.ty').css('background-color', 'transparent');
+    $('.ty').prop('disabled', true);
 }
 
 function subs(a, b){

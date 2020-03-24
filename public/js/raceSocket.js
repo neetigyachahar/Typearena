@@ -24,7 +24,7 @@ let socket;
 
 
 $('document').ready(() => {
-    socket = io.connect('https://typearena.herokuapp.com/race');
+    socket = io.connect('http://localhost:5000/race');
 
     //Initialize text
     data = $('.raceData').text();
@@ -86,7 +86,7 @@ $('document').ready(() => {
 
     socket.on('disconnect', time => {
         alert('You have been disconnected!');
-        window.location = 'https://typearena.herokuapp.com/';
+        window.location = 'http://localhost:5000';
     });
 
     socket.on('error', error => {
