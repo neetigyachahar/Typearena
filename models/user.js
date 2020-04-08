@@ -62,6 +62,10 @@ userSchema.methods.updateRace = function (wpm, accuracy, textID, winner){
         myWPM: wpm,
         win: winner
     });
+
+    if(this.last10Races.length > 10){
+        this.last10Races = this.last10Races.slice(this.last10Races.length-10, this.last10Races.length);
+    }
     
     if(wpm > this.bestWPM){
         this.bestWPM = wpm;

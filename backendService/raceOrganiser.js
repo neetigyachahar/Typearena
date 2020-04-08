@@ -183,8 +183,9 @@ exports.startService = () => {
                         } else {
                             winner = false;
                         }
-
+                        
                         io.of('/race').in(myRoom).emit('raceEnd', data);
+                        
                         // socket.leave(myRoom);    
                         if (socket.handshake.session.isLoggedIn) {
                             console.log(userID);
@@ -194,10 +195,10 @@ exports.startService = () => {
                                     let updatedUser = user.updateRace(data.wpm, data.accuracy, hotel.filter(room => room.name == myRoom)[0].RoomText._id, winner);
                                     socket.handshake.session.user = updatedUser;
                                     socket.handshake.session.save();
-
+                                    io.of('/race').to(socket.id).emit('myNewAVG', updatedUser.avgWPM10);
                                 })
                                 .catch(err => console.log(err));
-                        }
+                        } 
                         // if(hotel.filter(room => room.name == myRoom)[0].connectedUsersCount() == 0){
                         //     socket.disconnect();
                         // }

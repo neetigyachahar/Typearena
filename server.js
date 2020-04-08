@@ -67,6 +67,10 @@ app.all('*', loginVerify('<div style="font-size: 100px;"> 404 </div><br>Resource
   });
 });
 
+app.use((error, req, res, next)=>{
+  console.log(error);
+});
+
 //Connected Database and start listening
 mongoose
   .connect(MONGODB_URI, {useUnifiedTopology: true,  useCreateIndex: true, useNewUrlParser: true})
