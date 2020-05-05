@@ -82,7 +82,7 @@ $('document').ready(() => {
     });
 
 
-    $(window).bind('beforeunload', function () {
+    $(window).bind('beforeunload', function () { 
         if (socket.connected) {
             socket.disconnect();
         }
