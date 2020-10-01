@@ -10,7 +10,7 @@ const socketService = require('./utilities/socketService');
 const session = require('express-session');
 const socketSession = require('express-socket.io-session');
 const SessionInMongoDB = require('connect-mongodb-session')(session);
-const MONGODB_URI = "mongodb+srv://neetigya:pvx8RHA8CQb8O07l@cluster0-gdzqa.mongodb.net/typearena?retryWrites=true&w=majority"
+const MONGODB_URI = ""
 const store = new SessionInMongoDB({
   uri: MONGODB_URI,
   collection: 'session'
