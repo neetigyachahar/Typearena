@@ -30,7 +30,7 @@ def tokenpara(para):
     return(parat)
     
 # a sample representing user top mistakes
-mistakes = ['open','rubbish','potter', 'watch', 'movie', 'action', 'disappoitment']
+mistakes = ['open','rubbish','potter', 'watch', 'movie', 'action', 'disappoitment','disappointment','villain']
 
 #example\
 totalraces = 3210
