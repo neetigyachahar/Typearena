@@ -18,7 +18,10 @@ $('document').ready(()=>{
     }
 
 
-    $('.signupForm > button').click(evn=>{
+    $('.signupForm form').submit(evn=>{
+
+        console.log('clicked');
+
         $('.signupStatus').text('');
 
         var credentials = $(".signupForm").serialize();

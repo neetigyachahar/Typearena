@@ -16,7 +16,7 @@ $('document').ready(()=>{
         }
 
 
-        $('.loginForm > button').click(evn =>{
+        $('.loginSubmitBtn').submit(evn =>{
             $('.loginStatus').text('');
             var credentials = $(".loginForm").serialize();
             $.ajax({

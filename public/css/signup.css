@@ -1,53 +1,53 @@
-.signup *{
+.signup * {
     margin: 0;
     padding: 0;
 }
 
-.noSignUpPrompt{
+.noSignUpPrompt {
     display: none;
 }
 
-.signup{
+.signup {
     position: fixed;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
     z-index: 9999;
 }
 
-.signup > div{
+.signup>div {
     display: flex;
     flex-direction: column;
     background-color: #1c1c1c;
     border-radius: 10px;
-    box-shadow: 0px 0px 6px 8px black;
+    /* box-shadow: 0px 0px 6px 2px gray; */
     width: 50%;
     height: 60%;
     max-height: 541px;
     min-width: 525px;
     min-height: 485px;
     animation: signUpPromptIn 0.3s ease-in 0s forwards;
-    background-color: rgba(255,255,255, 0.24);
+    background-color: rgba(255, 255, 255, 0.24);
     background-position: 170% 120%;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 
-@keyframes signUpPromptIn{
-    from{
+@keyframes signUpPromptIn {
+    from {
         opacity: 0;
     }
-    to{
+    to {
         opacity: 1;
     }
 }
 
-.signup > div > h3{
+.signup>div>h3 {
     display: flex;
     flex: 1;
     align-items: center;
@@ -55,23 +55,23 @@
     padding-left: 3%;
     color: white;
     font-size: xx-large;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-.signup > div > h3 > img{
+.signup>div>h3>img {
     cursor: pointer;
     padding-right: 3.5%;
 }
 
-.signup > div > div{
+.signup>div>div {
     display: flex;
     flex-direction: row;
     flex: 6;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     /* border: 1px white solid; */
 }
 
-.signup > div > div > form{
+.signup>div>div>form {
     /* all: initial; */
     display: flex;
     flex: 1;
@@ -83,7 +83,7 @@
     /* border: 1px white solid; */
 }
 
-.signupBanner{
+.signupBanner {
     flex: 1;
     color: white;
     display: flex;
@@ -91,12 +91,12 @@
     padding: 35px;
     font-family: 'Open Sans', sans-serif;
     font-size: 100%;
-    overflow:hidden;
+    overflow: hidden;
+    text-align: justify;
+    letter-spacing: 2px;
 }
 
-
-
-.signup > div > div > form > div> input{
+.signup>div>div>form>div>input {
     margin: 10px;
     padding-top: 8px;
     font-size: 24px;
@@ -105,10 +105,10 @@
     background-color: transparent;
     outline: none;
     border: none;
-    border-bottom: 2px rgba(255,255,255, 0.7) solid;
+    border-bottom: 2px rgba(255, 255, 255, 0.7) solid;
 }
 
-.signup > div > div > form > button{
+.signupSubmitBtn {
     margin: auto;
     /* flex: 1.5; */
     width: 9rem;
@@ -124,7 +124,7 @@
     border: none;
 }
 
-.signupStatus{
+.signupStatus {
     color: red;
     height: 30px;
     text-align: center;
@@ -142,11 +142,11 @@
     }
 }
 
-.signup > div > div > form > button:hover{
+.signup>div>div>form>button:hover {
     cursor: pointer;
 }
 
-.signup > div > div > div{
+.signup>div>div>div {
     /* border: 1px white solid; */
     flex: 1;
 }

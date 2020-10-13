@@ -95,7 +95,7 @@
     border-bottom: 2px rgba(255,255,255, 0.7) solid;
 }
 
-.login > div > div > form > button{
+.loginSubmitBtn{
     margin: auto;
     /* flex: 1.5; */
     width: 7rem;

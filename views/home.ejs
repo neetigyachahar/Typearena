@@ -1,236 +1,265 @@
-        <%- include('partials/head') %>        
-        <title>Typearena</title>
-        <script src="/js/fadeeffect.js"></script>
-        <link href="/css/homestyle.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="noSignUpPrompt">
+<%- include('partials/head') %>
+<title>Typearena</title>
+<script src="/js/fadeeffect.js"></script>
+<link href="/css/homestyle.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="noSignUpPrompt">
+        <div>
+            <h3>Create an account<img id="cross" src="/img/close.svg" alt="close"></h3>
             <div>
-                <h3>Create an account<img id="cross" src="/img/close.svg" alt="close"></h3>
-                <div>
-                    <div class="signupBanner">
-                       With a Type Arena account, <br>get stared with a journy from novice to legendary typing skills. <br>The cost and pain of the journey is on us!
-                       <!-- <img src="/img/typewriter.svg" alt="typewriter"> -->
-                    </div> 
-                    <hr style = "width:0; height: 85%; margin: 0; opacity: 0.5;">
-                    <form class="signupForm" action="/signup" method="POST">
-                        <div class="signupStatus"></div>
-                        <div>
-                            <input type="text" name="name" placeholder="Full Name" pattern="[A-Za-z]+" maxlength="20" title="Only english characters allowed." spellcheck="false" required>
-                        </div>
-                        <div>
-                            <input type="text" name="usernameSignup" placeholder="Set username" pattern="[a-zA-Z0-9-]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
-                        </div>
-                        <div>
-                            <input type="email" name="email" placeholder="Email ID" spellcheck="false" required>
-                        </div>
-                        <div>
-                            <input type="password" name="passwordSignup" placeholder="Create Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" spellcheck="false" required>
-                        </div>
-                            <button type="button">Sign up</button>
-                    </form>
+                <div class="signupBanner">
+                    With a Type Arena account, <br>get stared with a journy from novice to legendary typing skills.
+                    <br>The cost and pain of the journey is on us!
+                    <!-- <img src="/img/typewriter.svg" alt="typewriter"> -->
                 </div>
+                <hr style="width:0; height: 85%; margin: 0; opacity: 0.5;">
+                <form class="signupForm" action="/signup" method="POST">
+                    <div class="signupStatus"></div>
+                    <div>
+                        <input type="text" name="name" placeholder="Full Name" pattern="[A-Za-z]+" maxlength="20"
+                            title="Only english characters allowed." spellcheck="false" required>
+                    </div>
+                    <div>
+                        <input type="text" name="usernameSignup" placeholder="Set username" pattern="[a-zA-Z0-9-]+"
+                            maxlength="10" title="Only english characters allowed." spellcheck="false" required>
+                    </div>
+                    <div>
+                        <input type="email" name="email" placeholder="Email ID" spellcheck="false" required>
+                    </div>
+                    <div>
+                        <input type="password" name="passwordSignup" placeholder="Create Password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                            spellcheck="false" required>
+                    </div>
+                    <input class="signupSubmitBtn" type="submit" value="Sign up">
+                </form>
             </div>
         </div>
-        <div class="noLoginPrompt">
+    </div>
+    <div class="noLoginPrompt">
+        <div>
+            <h3>Login<img id="crossLogin" src="/img/close.svg" alt="close"></h3>
             <div>
-                <h3>Login<img id="crossLogin" src="/img/close.svg" alt="close"></h3>
-                <div>
-                    <form class="loginForm" method="POST">
-                        <div class="loginStatus"></div>
-                        <div>
-                            <input type="text" name="username" placeholder="username" pattern="[a-zA-Z0-9-]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>
-                        </div>
-                        <div>
-                            <input type="password" name="password" placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" spellcheck="false" required>
-                        </div>
-                        <div>
-                            <a class="forgotPassowrd" href="/forgotPassword">Forgot Password</a>
-                        </div>
-                            <button type="button">Login</button>
-                    </form>
-                </div>
+                <form class="loginForm" method="POST">
+                    <div class="loginStatus"></div>
+                    <div>
+                        <input type="text" name="username" placeholder="username" pattern="[a-zA-Z0-9-]+" maxlength="10"
+                            title="Only english characters allowed." spellcheck="false" required>
+                    </div>
+                    <div>
+                        <input type="password" name="password" placeholder="password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                            spellcheck="false" required>
+                    </div>
+                    <div>
+                        <a class="forgotPassowrd" href="/forgotPassword">Forgot Password</a>
+                    </div>
+                    <input class="loginSubmitBtn" type="submit" value="Login">
+                </form>
             </div>
         </div>
-        <nav>
-            <div>
-                <ul>
-                    <!-- <li>
+    </div>
+    <nav>
+        <div>
+            <ul>
+                <!-- <li>
                         <a href="/" class="logo">
                             <img src="img/navlogo.svg" alt="logo" >
                         </a>
                     </li> -->
-                </ul>
-            </div>
-            <div>
-                <ul>
-                    <li>
-                        <% if(logged){ %>
-                            <a href="/profile"><%= name %></a>
-                        <% }else{ %>
-                            <a class='navLogin' href="#">login</a>
-                        <% } %>
-                    </li>
-                    <li>
-                        <% if(logged){ %>
-                            <a class="navLogout" href="/logout">Log out</a>
-                        <% }else{ %>
-                            <a class="navSignup" href="#">Sign up</a>
-                        <% } %>
-                    </li>
-                </ul>
-            </div>
-        </nav>   
-        <div class="belowNav"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <div class="row">
-                        <div class="col-3">
-                        </div>
-                <div class="col-10 uppermostheading"><h1 class="uppermostheading"><img src="img/fulllogo.svg" class="uppermostlogo"></h1>
-                        </div>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <% if(logged){ %>
+                    <a href="/profile"><%= name %></a>
+                    <% }else{ %>
+                    <a class='navLogin' href="#">login</a>
+                    <% } %>
+                </li>
+                <li>
+                    <% if(logged){ %>
+                    <a class="navLogout" href="/logout">Log out</a>
+                    <% }else{ %>
+                    <a class="navSignup" href="#">Sign up</a>
+                    <% } %>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="belowNav"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-3">
                     </div>
-                    <div class="row">
-                        <div class = "col-12">
-                            <p class = "uppermostpara"></p>
-                        </div>
-                    </div>
-                    <div class="row topmostbutton">
-                        <div class = "col-12 topmostbutton">
-                            
-                             <button class="topmostbutton"> <a href="/race"> Start typing <img src="/img/arrow24.svg" alt="start racing"></a></button>
-                             
-                        </div>
+                    <div class="col-10 uppermostheading">
+                        <h1 class="uppermostheading"><img src="img/fulllogo.svg" class="uppermostlogo"></h1>
                     </div>
                 </div>
-                <div class="col-6">
-                    <video class="typearenaimage" muted autoplay loop preload="auto" src="vid/demo.webm">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="uppermostpara"></p>
+                    </div>
+                </div>
+                <div class="row topmostbutton">
+                    <div class="col-12 topmostbutton">
+
+                        <button class="topmostbutton"> <a href="/race"> Start typing <img src="/img/arrow24.svg"
+                                    alt="start racing"></a></button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <video class="typearenaimage" muted autoplay loop preload="auto" src="vid/demo.webm">
+            </div>
+        </div>
+    </div>
+
+    <br> <br> <br>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 iconcolumn">
+                <img class="megaicons fade" src="img/Group 13.svg">
+            </div>
+            <div class="col-6 halfcontainercard">
+                <div class="row">
+                    <div class="col-3 colortheme">
+                        <img src="img/bluepolygonfive.svg" class="colortheme">
+                    </div>
+                    <div class="col-9 featurehead">
+                        <h1>Ultimate user experience</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 level1">
+                        <p class="featurepara">We believe typing is a gratifying activity. Therefore we provide you with
+                            comfortable enviroment to learn typing. Ranging from dark mode to fun games, everything is
+                            designed to give user a beautiful experience. Moreover most of the things are personalized
+                            and customizable in settings making it super user friendly </P>
+                    </div>
+                </div>
+                <div class="row topmostbutton">
+                    <div class="col-12 featurebutton">
+                        <button class="featurebuttonblue"> <a href="#">Experience it!</a></button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-<br> <br> <br>
 
 
-        <div class="container">
-            <div class="row">
-                <div class="col-6 iconcolumn">
-                        <img class="megaicons fade" src="img/Group 13.svg">
-                </div>
-                <div class="col-6 halfcontainercard">
-                    <div class="row">
-                        <div class="col-3 colortheme">
-                            <img src="img/bluepolygonfive.svg" class="colortheme">
-                        </div>
-                <div class="col-9 featurehead"><h1>Ultimate user experience</h1>
-                        </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 halfcontainercard">
+                <div class="row">
+                    <div class="col-3 colortheme">
+                        <img src="img/Polygon 5.svg" class="colortheme">
                     </div>
-                    <div class="row">
-                        <div class = "col-12 level1">
-                            <p class = "featurepara">We believe typing is a gratifying activity.  Therefore we provide you with comfortable enviroment to learn typing. Ranging from dark mode to fun games, everything is designed to give user a beautiful experience. Moreover most of the things are personalized and customizable in settings making it super user friendly </P>
-                        </div>
-                    </div>
-                    <div class="row topmostbutton">
-                        <div class = "col-12 featurebutton">
-                            <button class="featurebuttonblue"> <a href="#">Experience it!</a></button>
-                        </div>
+                    <div class="col-9 featurehead">
+                        <h1>Plenty of modes to choose from</h1>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 level1">
+                        <p class="featurepara">Typing is a vast skill. It should not be limited to just copying down the
+                            text. Along with fast hand it requries good ears, excellent hand-eye coordination, retention
+                            memory, concentration and much more. We here at Typearena want to tick all the departments
+                            when it comes to typing through our various modes and interactive games. </P>
+                    </div>
+                </div>
+                <div class="row topmostbutton">
+                    <div class="col-12 featurebutton">
+                        <button class="featurebuttongreen"> <a href="#">Explore modes</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 iconcolumn">
+                <img class="megaicons fade" src="img/Group 12.svg">
             </div>
         </div>
-        
+    </div>
 
 
 
+    <div class="container">
+        <div class="row">
 
-
-        <div class="container">
-            <div class="row">
-                <div class="col-6 halfcontainercard">
-                    <div class="row">
-                        <div class="col-3 colortheme">
-                            <img src="img/Polygon 5.svg" class="colortheme">
-                        </div>
-                <div class="col-9 featurehead"><h1>Plenty of modes to choose from</h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class = "col-12 level1">
-                            <p class = "featurepara">Typing is a vast skill. It should not be limited to just copying down the text. Along with fast hand it requries good ears, excellent hand-eye coordination, retention memory, concentration and much more. We here at Typearena want to tick all the departments when it comes to typing through our various modes and interactive games. </P>
-                        </div>
-                    </div>
-                    <div class="row topmostbutton">
-                        <div class = "col-12 featurebutton">
-                            <button class="featurebuttongreen"> <a href="#">Explore modes</a></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 iconcolumn">
-                    <img class="megaicons fade" src="img/Group 12.svg">
-            </div>
-            </div>
-        </div>
-        
-
-
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-6 iconcolumn">
-                    <img class="megaicons fade" src="img/Group 15.svg">
+            <div class="col-6 iconcolumn">
+                <img class="megaicons fade" src="img/Group 15.svg">
             </div>
             <div class="col-6 halfcontainercard">
                 <div class="row">
                     <div class="col-3 colortheme">
                         <img src="img/cyanpolygonfive.svg" class="colortheme">
                     </div>
-            <div class="col-9 featurehead"><h1>Hustle your way to the top!</h1>
+                    <div class="col-9 featurehead">
+                        <h1>Hustle your way to the top!</h1>
                     </div>
                 </div>
                 <div class="row">
-                    <div class = "col-12 level1">
-                        <p class = "featurepara">Join the arena to test your typing skills while racing with other top typers online and boost your typing accuarcy and skills. Practice and become master of the game. Climb the leaderboard by beating your friends and typers from around the globe in the arena mode. Also chat, challenge and make new friends while making your way to the top. </P>
+                    <div class="col-12 level1">
+                        <p class="featurepara">Join the arena to test your typing skills while racing with other top
+                            typers online and boost your typing accuarcy and skills. Practice and become master of the
+                            game. Climb the leaderboard by beating your friends and typers from around the globe in the
+                            arena mode. Also chat, challenge and make new friends while making your way to the top. </P>
                     </div>
                 </div>
                 <div class="row topmostbutton">
-                    <div class = "col-12 featurebutton">
+                    <div class="col-12 featurebutton">
                         <button class="featurebuttoncyan"> <a href="#">Goto leaderboard</a></button>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-6 halfcontainercard">
-                    <div class="row">
-                        <div class="col-3 colortheme">
-                            <img src="img/yellowpolygonfive.svg" class="colortheme">
-                        </div>
-                <div class="col-9 featurehead"><h1>Learn typing and earn money</h1>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 halfcontainercard">
+                <div class="row">
+                    <div class="col-3 colortheme">
+                        <img src="img/yellowpolygonfive.svg" class="colortheme">
                     </div>
-                    <div class="row">
-                        <div class = "col-12 level1">
-                            <p class = "featurepara">Master your accuracy and speed to unlock this mode. Sign up to take a typing job posted by others. Transcribe text, do image copying, come up with subtitles and many other similar typing jobs. Complete jobs and earn real money as you learn to type. Build your skills and expand your network on the side.</P>
-                        </div>
-                    </div>
-                    <div class="row topmostbutton">
-                        <div class = "col-12 featurebutton">
-                            <button class="featurebuttonyellow"> <a href="#">Learn more</a></button>
-                        </div>
+                    <div class="col-9 featurehead">
+                        <h1>Learn typing and earn money</h1>
                     </div>
                 </div>
-                <div class="col-6 iconcolumn">
-                    <img class="megaicons fade" src="img/Group 14.svg">
+                <div class="row">
+                    <div class="col-12 level1">
+                        <p class="featurepara">Master your accuracy and speed to unlock this mode. Sign up to take a
+                            typing job posted by others. Transcribe text, do image copying, come up with subtitles and
+                            many other similar typing jobs. Complete jobs and earn real money as you learn to type.
+                            Build your skills and expand your network on the side.</P>
+                    </div>
+                </div>
+                <div class="row topmostbutton">
+                    <div class="col-12 featurebutton">
+                        <button class="featurebuttonyellow"> <a href="#">Learn more</a></button>
+                    </div>
+                </div>
             </div>
+            <div class="col-6 iconcolumn">
+                <img class="megaicons fade" src="img/Group 14.svg">
             </div>
         </div>
-        
-        <footer class="foots">
-            <div class="row">
+    </div>
+
+    <footer class="foots">
+        <div class="row">
             <div class="col-4">
                 <ul>
                     <lh>Company</lh>
@@ -248,9 +277,12 @@
                 </ul>
             </div>
             <div class="col-4">
-            <label class="foottext"><h6>Made in IN with &#x2764;</h6></label>
-                </div>
-                </div>
-        </footer>
-    </body>
+                <label class="foottext">
+                    <h6>Made in IN with &#x2764;</h6>
+                </label>
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>
