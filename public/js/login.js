@@ -1,35 +1,37 @@
-$('document').ready(()=>{   
-    if($('.navLogin').length){
+$('document').ready(() => {
+    if ($('.navLogin').length) {
         let login = $('.noLoginPrompt');
-        let nav = $('.navLogin');   
+        let nav = $('.navLogin');
         let close = $('#crossLogin');
-        if(nav.length){
-            nav.click((evt)=>{
+        if (nav.length) {
+            nav.click((evt) => {
                 evt.preventDefault();
                 login.toggleClass('noLoginPrompt login');
             });
 
-            close.click(()=>{
+            close.click(() => {
                 login.toggleClass('login noLoginPrompt');
             });
 
         }
 
 
-        $('.loginSubmitBtn').submit(evn =>{
+        $('#logForm').submit(evn => {
+            evn.preventDefault();
+
             $('.loginStatus').text('');
             var credentials = $(".loginForm").serialize();
             $.ajax({
                 type: "POST",
                 url: "/login",
                 data: credentials,
-                success: function(data) {
+                success: function (data) {
                     $('.loginStatus').text(data.message);
-                    if(data.redirect){
+                    if (data.redirect) {
                         $('.loginStatus').css('color', 'white');
                         $('.loginStatus').css('font-size', '1.2rem');
                         $('.loginStatus').text(data.message);
-                        setTimeout(()=>{
+                        setTimeout(() => {
                             location.reload();
                         }, 1000);
                     }

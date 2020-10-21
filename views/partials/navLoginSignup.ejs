@@ -7,7 +7,7 @@
                <!-- <img src="/img/typewriter.svg" alt="typewriter"> -->
             </div> 
             <hr style = "width:0; height: 85%; margin: 0; opacity: 0.5;">
-            <form class="signupForm" action="/signup" method="POST">
+            <form id="signForm" class="signupForm" action="/signup" method="POST">
                 <div class="signupStatus"></div>
                 <div>
                     <input 
@@ -38,7 +38,7 @@
     <div>
         <h3>Login<img id="crossLogin" src="/img/close.svg" alt="close"></h3>
         <div>
-            <form class="loginForm" method="POST">
+            <form id="logForm" class="loginForm" method="POST">
                 <div class="loginStatus"></div>
                 <div>
                     <input type="text" name="username" placeholder="username" pattern="[a-zA-Z0-9-]+" maxlength="10" title="Only english characters allowed." spellcheck="false" required>

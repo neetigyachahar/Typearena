@@ -18,9 +18,12 @@ $('document').ready(()=>{
     }
 
 
-    $('.signupForm form').submit(evn=>{
+    $('#signForm').submit(evn=>{
 
+        evn.preventDefault();
         console.log('clicked');
+
+        localStorage.setItem('het', 'bet');
 
         $('.signupStatus').text('');
 
@@ -36,7 +39,7 @@ $('document').ready(()=>{
                     $('.signupStatus').css('font-size', '1.2rem');
                     $('.signupStatus').text(data.message);
                     setTimeout(()=>{
-                        location.reload(true);
+                        location.reload();
                     }, 2000);
                 }
             }

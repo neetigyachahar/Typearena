@@ -37,7 +37,6 @@ app.use((req, res, next)=>{
   if(!req.session.isLoggedIn){
     req.session.isLoggedIn = false;
   }
-
   if(!req.session.user){
     req.session['user'] = {
       _id: randomString.generate(10),
