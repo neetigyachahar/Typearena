@@ -40,6 +40,6 @@
     "progressbar.js": "^1.1.0",
     "randomstring": "^1.1.5",
     "socket.io": "^2.3.0",
-    "three": "^0.114.0"
+    "three": "^0.137.0"
   }
 }
